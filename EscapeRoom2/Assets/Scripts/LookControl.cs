@@ -30,6 +30,6 @@ public class LookControl : MonoBehaviour
         rotation -= mouseY * mouseSensitivity * Time.deltaTime;
         rotation = Mathf.Clamp(rotation, -80.0f, 80.0f);
 
-        cameraTransform.localEulerAngles = new Vector3(rotation, 0.0f, 0.0f);
+        cameraTransform.localEulerAngles = Vector3.right * rotation;
     }
 }
