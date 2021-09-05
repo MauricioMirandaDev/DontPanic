@@ -11,41 +11,63 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private EventSystem eventSystem;
 
+
     // Start menu elements
     [SerializeField]
     private Canvas startMenu;
 
     [SerializeField]
-    private Button startButton;
+    private Button enterButton;
+
 
     // Game menu elements
     [SerializeField]
     private Canvas gameMenu;
 
     [SerializeField]
-    private Button startGameButton;
+    private Button startButton;
+
+    [SerializeField]
+    private Button optionsButton;
+
+
+    // Options menu elements
+    [SerializeField]
+    private Canvas optionsMenu;
+
+    [SerializeField]
+    private Button returnButton;
+
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        startMenu.enabled = true;
-        gameMenu.enabled = false;
-
-        eventSystem.SetSelectedGameObject(startButton.gameObject);
+        ActivateMenu(true, false, false, enterButton);
     }
 
-    public void StartButtonClicked()
+    public void SetGameMenuActive()
     {
-        startMenu.enabled = false;
-        gameMenu.enabled = true;
-
-        eventSystem.SetSelectedGameObject(startGameButton.gameObject);
+        ActivateMenu(false, true, false, startButton);
     }
 
-    public void StartGameButtonClicked()
+    public void SetOptionsMenuActive()
+    {
+        ActivateMenu(false, false, true, returnButton);
+    }
+
+    public void StartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    private void ActivateMenu(bool startMenuActive, bool gameMenuActive, bool optionsMenuActive, Button firstSelectedButton)
+    {
+        startMenu.enabled = startMenuActive;
+        gameMenu.enabled = gameMenuActive;
+        optionsMenu.enabled = optionsMenuActive;
+
+        eventSystem.SetSelectedGameObject(firstSelectedButton.gameObject);
     }
 }
