@@ -94,9 +94,10 @@ GameObject:
   - component: {fileID: 5729091631796018219}
   - component: {fileID: 5729091631796018223}
   - component: {fileID: 5729091631796018218}
-  - component: {fileID: 5729091631796018220}
   - component: {fileID: 5729091631796018221}
   - component: {fileID: 5729091631796018222}
+  - component: {fileID: 5729091632037784947}
+  - component: {fileID: 961689357361091804}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: Player
@@ -149,18 +150,6 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5729091631796018220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5729091631796018216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78bd14e57a8caaa4c95b77b48a3e45b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5729091631796018221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,4 +176,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 50
+  gamepadSpeed: 100
   cameraTransform: {fileID: 5729091631079964677}
+--- !u!114 &5729091632037784947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729091631796018216}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b92b7c785d69843af3adcb5dce9a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &961689357361091804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729091631796018216}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ee7349a6876af43882f30e6d4ead39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
