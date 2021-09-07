@@ -8,6 +8,7 @@ public class LookControl : MonoBehaviour
     [SerializeField]
     private float mouseSensitivity = 10.0f;
 
+    // How fast the gamepad will rotate the camera
     [SerializeField]
     private float gamepadSpeed = 10.0f;
 
@@ -19,6 +20,7 @@ public class LookControl : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Controls horizontal look rotation
