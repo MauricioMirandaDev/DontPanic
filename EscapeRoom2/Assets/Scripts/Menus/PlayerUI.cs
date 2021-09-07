@@ -29,8 +29,16 @@ public class PlayerUI : MonoBehaviour
     [SerializeField]
     private EventSystem eventSystem;
 
+    // Audio components
+    [SerializeField]
+    private AudioClip menuClick;
+
+    private AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         welcomeMenu.SetActive(true);
         inputMenu.SetActive(false);
 
@@ -43,6 +51,8 @@ public class PlayerUI : MonoBehaviour
         inputMenu.SetActive(true);
 
         eventSystem.SetSelectedGameObject(keyboardButton.gameObject);
+
+        audioSource.PlayOneShot(menuClick);
     }
 
     public void KeyboardButtonPressed()
@@ -50,6 +60,8 @@ public class PlayerUI : MonoBehaviour
         inputMenu.SetActive(false);
 
         player.inputMode = FirstPersonPlayer.InputMode.Keyboard;
+
+        audioSource.PlayOneShot(menuClick);
     }
 
     public void GamepadButtonPressed()
@@ -57,5 +69,7 @@ public class PlayerUI : MonoBehaviour
         inputMenu.SetActive(false);
 
         player.inputMode = FirstPersonPlayer.InputMode.Gamepad;
+
+        audioSource.PlayOneShot(menuClick);
     }
 }
