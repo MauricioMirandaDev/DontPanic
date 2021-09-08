@@ -7,7 +7,7 @@ public class InputComponent : MonoBehaviour
 {
     // Input variables
     protected FirstPersonInputActions firstPersonInputActions;
-    protected InputAction movement;
+    public InputAction movement;
     protected InputAction look;
 
     // Movement variables

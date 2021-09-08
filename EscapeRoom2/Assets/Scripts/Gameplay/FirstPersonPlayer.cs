@@ -11,6 +11,7 @@ public class FirstPersonPlayer : MonoBehaviour
     private LookControl lookControl;
     private KeyboardInput keyboardInput;
     private GamepadInput gamepadInput;
+    private PlayerAnimation playerAnimation;
 
     private void Start()
     {
@@ -25,6 +26,8 @@ public class FirstPersonPlayer : MonoBehaviour
 
         gamepadInput = GetComponent<GamepadInput>();
         gamepadInput.enabled = false;
+
+        playerAnimation = GetComponentInChildren<PlayerAnimation>();
 
         inputMode = InputMode.Null;
     }
@@ -46,5 +49,8 @@ public class FirstPersonPlayer : MonoBehaviour
                 gamepadInput.enabled = false;
                 break;
         }
+
+        playerAnimation.SetRunningState(keyboardInput.movement.ReadValue<Vector2>(), gamepadInput.movement.ReadValue<Vector2>());
     }
+
 }
