@@ -35,6 +35,7 @@ public class GamepadInput : InputComponent
 
     protected override void Select(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("GAMEPAD SELECT");
+        if (playerUI.focussedObject != null)
+            playerUI.hint.SetText(playerUI.focussedObject.GetComponent<Interactable>().playerHint);
     }
 }

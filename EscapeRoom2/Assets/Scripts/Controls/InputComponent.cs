@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class InputComponent : MonoBehaviour
 {
@@ -14,10 +15,17 @@ public class InputComponent : MonoBehaviour
     protected MovementControl movementControl;
     protected LookControl lookControl;
 
+    // UI variables
+    protected PlayerUI playerUI;
+
+    [SerializeField]
+    private float hintLength = 1.0f;
+
     private void Start()
     {
         movementControl = GetComponent<MovementControl>();
         lookControl = GetComponent<LookControl>();
+        playerUI = GetComponentInChildren<PlayerUI>();
     }
 
     private void Awake()

@@ -35,6 +35,7 @@ public class KeyboardInput : InputComponent
 
     protected override void Select(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("KEYBOARD SELECT");
+        if (playerUI.focussedObject != null)
+            playerUI.hint.SetText(playerUI.focussedObject.GetComponent<Interactable>().playerHint);
     }
 }
