@@ -11,20 +11,19 @@ public class InputComponent : MonoBehaviour
     public InputAction movement;
     protected InputAction look;
 
-    // Movement variables
+    // Control variables
     protected MovementControl movementControl;
     protected LookControl lookControl;
+    protected InteractControl interactControl;
 
     // UI variables
     protected PlayerUI playerUI;
-
-    [SerializeField]
-    private float hintLength = 1.0f;
 
     private void Start()
     {
         movementControl = GetComponent<MovementControl>();
         lookControl = GetComponent<LookControl>();
+        interactControl = GetComponent<InteractControl>();
         playerUI = GetComponentInChildren<PlayerUI>();
     }
 
@@ -33,7 +32,15 @@ public class InputComponent : MonoBehaviour
         firstPersonInputActions = new FirstPersonInputActions();
     }
 
-    protected virtual void Select(InputAction.CallbackContext callbackContext)
+    protected virtual void Examine(InputAction.CallbackContext callbackContext)
+    {
+    }
+
+    protected virtual void Interact(InputAction.CallbackContext callbackContext)
+    {
+    }
+
+    protected virtual void FinishInteract(InputAction.CallbackContext callbackContext)
     {
     }
 }

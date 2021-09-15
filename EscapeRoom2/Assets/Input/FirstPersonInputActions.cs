@@ -35,12 +35,20 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Select"",
+                    ""name"": ""Examine"",
                     ""type"": ""Button"",
                     ""id"": ""43fefbdf-69d1-46e9-978c-64102dcfd37a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""f6d38e73-cdfe-44e4-85a0-7915faa4090d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap(duration=0.2,pressPoint=1),Hold(duration=0.5,pressPoint=1)""
                 }
             ],
             ""bindings"": [
@@ -117,7 +125,18 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Select"",
+                    ""action"": ""Examine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0dbabe5-251b-4c74-937a-ae91959c9955"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -144,12 +163,20 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Select"",
+                    ""name"": ""Examine"",
                     ""type"": ""Button"",
                     ""id"": ""127d6e6f-4989-42d1-a5bd-ae50b4c4461a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""b042d650-386c-43d7-af11-b0437e19049d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap(duration=0.2,pressPoint=1),Hold(duration=0.5,pressPoint=1)""
                 }
             ],
             ""bindings"": [
@@ -222,11 +249,22 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2ad43d29-2338-4ddd-9cf1-7e8f3cd83e7e"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Select"",
+                    ""action"": ""Examine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42d9ad39-007d-4446-bfd2-f960637ab8ec"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -239,12 +277,14 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
         m_PlayerKeyboardandMouse = asset.FindActionMap("Player (Keyboard and Mouse)", throwIfNotFound: true);
         m_PlayerKeyboardandMouse_Move = m_PlayerKeyboardandMouse.FindAction("Move", throwIfNotFound: true);
         m_PlayerKeyboardandMouse_Look = m_PlayerKeyboardandMouse.FindAction("Look", throwIfNotFound: true);
-        m_PlayerKeyboardandMouse_Select = m_PlayerKeyboardandMouse.FindAction("Select", throwIfNotFound: true);
+        m_PlayerKeyboardandMouse_Examine = m_PlayerKeyboardandMouse.FindAction("Examine", throwIfNotFound: true);
+        m_PlayerKeyboardandMouse_Interact = m_PlayerKeyboardandMouse.FindAction("Interact", throwIfNotFound: true);
         // Player (Gamepad)
         m_PlayerGamepad = asset.FindActionMap("Player (Gamepad)", throwIfNotFound: true);
         m_PlayerGamepad_Move = m_PlayerGamepad.FindAction("Move", throwIfNotFound: true);
         m_PlayerGamepad_Look = m_PlayerGamepad.FindAction("Look", throwIfNotFound: true);
-        m_PlayerGamepad_Select = m_PlayerGamepad.FindAction("Select", throwIfNotFound: true);
+        m_PlayerGamepad_Examine = m_PlayerGamepad.FindAction("Examine", throwIfNotFound: true);
+        m_PlayerGamepad_Interact = m_PlayerGamepad.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -296,14 +336,16 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
     private IPlayerKeyboardandMouseActions m_PlayerKeyboardandMouseActionsCallbackInterface;
     private readonly InputAction m_PlayerKeyboardandMouse_Move;
     private readonly InputAction m_PlayerKeyboardandMouse_Look;
-    private readonly InputAction m_PlayerKeyboardandMouse_Select;
+    private readonly InputAction m_PlayerKeyboardandMouse_Examine;
+    private readonly InputAction m_PlayerKeyboardandMouse_Interact;
     public struct PlayerKeyboardandMouseActions
     {
         private @FirstPersonInputActions m_Wrapper;
         public PlayerKeyboardandMouseActions(@FirstPersonInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerKeyboardandMouse_Move;
         public InputAction @Look => m_Wrapper.m_PlayerKeyboardandMouse_Look;
-        public InputAction @Select => m_Wrapper.m_PlayerKeyboardandMouse_Select;
+        public InputAction @Examine => m_Wrapper.m_PlayerKeyboardandMouse_Examine;
+        public InputAction @Interact => m_Wrapper.m_PlayerKeyboardandMouse_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerKeyboardandMouse; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -319,9 +361,12 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnLook;
-                @Select.started -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnSelect;
-                @Select.performed -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnSelect;
-                @Select.canceled -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnSelect;
+                @Examine.started -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnExamine;
+                @Examine.performed -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnExamine;
+                @Examine.canceled -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnExamine;
+                @Interact.started -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface = instance;
             if (instance != null)
@@ -332,9 +377,12 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Select.started += instance.OnSelect;
-                @Select.performed += instance.OnSelect;
-                @Select.canceled += instance.OnSelect;
+                @Examine.started += instance.OnExamine;
+                @Examine.performed += instance.OnExamine;
+                @Examine.canceled += instance.OnExamine;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -345,14 +393,16 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
     private IPlayerGamepadActions m_PlayerGamepadActionsCallbackInterface;
     private readonly InputAction m_PlayerGamepad_Move;
     private readonly InputAction m_PlayerGamepad_Look;
-    private readonly InputAction m_PlayerGamepad_Select;
+    private readonly InputAction m_PlayerGamepad_Examine;
+    private readonly InputAction m_PlayerGamepad_Interact;
     public struct PlayerGamepadActions
     {
         private @FirstPersonInputActions m_Wrapper;
         public PlayerGamepadActions(@FirstPersonInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerGamepad_Move;
         public InputAction @Look => m_Wrapper.m_PlayerGamepad_Look;
-        public InputAction @Select => m_Wrapper.m_PlayerGamepad_Select;
+        public InputAction @Examine => m_Wrapper.m_PlayerGamepad_Examine;
+        public InputAction @Interact => m_Wrapper.m_PlayerGamepad_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerGamepad; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -368,9 +418,12 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnLook;
-                @Select.started -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnSelect;
-                @Select.performed -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnSelect;
-                @Select.canceled -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnSelect;
+                @Examine.started -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnExamine;
+                @Examine.performed -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnExamine;
+                @Examine.canceled -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnExamine;
+                @Interact.started -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerGamepadActionsCallbackInterface = instance;
             if (instance != null)
@@ -381,9 +434,12 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Select.started += instance.OnSelect;
-                @Select.performed += instance.OnSelect;
-                @Select.canceled += instance.OnSelect;
+                @Examine.started += instance.OnExamine;
+                @Examine.performed += instance.OnExamine;
+                @Examine.canceled += instance.OnExamine;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -392,12 +448,14 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnSelect(InputAction.CallbackContext context);
+        void OnExamine(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IPlayerGamepadActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnSelect(InputAction.CallbackContext context);
+        void OnExamine(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

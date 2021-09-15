@@ -7,6 +7,9 @@ public class FirstPersonPlayer : MonoBehaviour
     public enum InputMode { Keyboard, Gamepad, Null };
     public InputMode inputMode;
 
+    [SerializeField]
+    private Transform grabPosition;
+
     private MovementControl movementControl;
     private LookControl lookControl;
     private KeyboardInput keyboardInput;

@@ -22,12 +22,20 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Select",
+                    "name": "Examine",
                     "type": "Button",
                     "id": "43fefbdf-69d1-46e9-978c-64102dcfd37a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "f6d38e73-cdfe-44e4-85a0-7915faa4090d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap(duration=0.2,pressPoint=1),Hold(duration=0.5,pressPoint=1)"
                 }
             ],
             "bindings": [
@@ -104,7 +112,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "Examine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0dbabe5-251b-4c74-937a-ae91959c9955",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -131,12 +150,20 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Select",
+                    "name": "Examine",
                     "type": "Button",
                     "id": "127d6e6f-4989-42d1-a5bd-ae50b4c4461a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "b042d650-386c-43d7-af11-b0437e19049d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap(duration=0.2,pressPoint=1),Hold(duration=0.5,pressPoint=1)"
                 }
             ],
             "bindings": [
@@ -209,11 +236,22 @@
                 {
                     "name": "",
                     "id": "2ad43d29-2338-4ddd-9cf1-7e8f3cd83e7e",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "Examine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42d9ad39-007d-4446-bfd2-f960637ab8ec",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
