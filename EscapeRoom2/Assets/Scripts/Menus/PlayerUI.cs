@@ -17,6 +17,9 @@ public class PlayerUI : MonoBehaviour
     private new Camera camera;
 
     [SerializeField]
+    private GameObject countdown;
+
+    [SerializeField]
     private LayerMask interactableLayer;
 
     [SerializeField]
@@ -94,6 +97,8 @@ public class PlayerUI : MonoBehaviour
 
         player.inputMode = FirstPersonPlayer.InputMode.Keyboard;
         previousInput = player.inputMode;
+
+        countdown.SetActive(true);
 
         audioSource.PlayOneShot(menuClick);
     }
