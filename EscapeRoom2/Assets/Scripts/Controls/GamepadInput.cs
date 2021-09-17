@@ -42,7 +42,7 @@ public class GamepadInput : InputComponent
     protected override void Examine(InputAction.CallbackContext callbackContext)
     {
         if (playerUI.focussedObject != null)
-            playerUI.hint.SetText(playerUI.focussedObject.GetComponent<Interactable>().playerHint);
+            playerUI.gameplayMenu.hint.SetText(playerUI.focussedObject.GetComponent<Interactable>().playerHint);
     }
 
     protected override void Interact(InputAction.CallbackContext callbackContext)
@@ -53,7 +53,7 @@ public class GamepadInput : InputComponent
                 playerUI.ActivateInteractMenu();
             else if (callbackContext.interaction is HoldInteraction && playerUI.focussedObject.gameObject.CompareTag("Moveable"))
             {
-                playerUI.gameplayMenu.SetActive(false);
+                playerUI.gameplayMenu.gameObject.SetActive(false);
 
                 interactControl.selectedObject = playerUI.focussedObject;
                 interactControl.Grab();
@@ -63,7 +63,7 @@ public class GamepadInput : InputComponent
 
     protected override void FinishInteract(InputAction.CallbackContext callbackContext)
     {
-        playerUI.gameplayMenu.SetActive(true);
+        playerUI.gameplayMenu.gameObject.SetActive(true);
         interactControl.LetGo();
     }
 }

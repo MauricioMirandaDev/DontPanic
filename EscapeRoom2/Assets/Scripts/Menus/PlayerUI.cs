@@ -7,69 +7,14 @@ using TMPro;
 
 public class PlayerUI : MonoBehaviour
 {
-    // Welcome menu components
-    [SerializeField]
-    private GameObject welcomeMenu;
+    public GameObject focussedObject;
 
+    // Variables
     [SerializeField]
-    private Button enterButton;
-
-
-    // Input menu components
-    [SerializeField]
-    private GameObject inputMenu;
+    private AudioClip menuClick;
 
     [SerializeField]
-    private Button keyboardButton;
-
-    // Gameplay menu components
-    public GameObject gameplayMenu;
-
-    [SerializeField]
-    private Image reticle;
-
-    public TMP_Text hint;
-
-    [SerializeField]
-    private GameObject examineAction;
-
-    [SerializeField]
-    private RawImage examineActionimage;
-
-    [SerializeField]
-    private Sprite examineKeyboard;
-
-    [SerializeField]
-    private Sprite examineGamepad;
-
-    [SerializeField]
-    private GameObject interactAction;
-
-    [SerializeField]
-    private RawImage interactActionImage;
-
-    [SerializeField]
-    private Sprite interactGamepad;
-
-    [SerializeField]
-    private Sprite interactKeyboard;
-
-
-    // Interact menu components
-    [SerializeField]
-    private GameObject interactMenu;
-
-    [SerializeField]
-    private Button exitButton;
-
-    // Gameplay components
-    [SerializeField]
-    private FirstPersonPlayer player;
-
-    private FirstPersonPlayer.InputMode previousMode;
-
-    [SerializeField]
-    private Camera camera;
+    private new Camera camera;
 
     [SerializeField]
     private LayerMask interactableLayer;
@@ -77,136 +22,181 @@ public class PlayerUI : MonoBehaviour
     [SerializeField]
     private float raycastDistance = 1.0f;
 
-    public GameObject focussedObject;
+    [SerializeField]
+    private Texture examineKeyboard;
 
     [SerializeField]
+    private Texture interactKeyboard;
+
+    [SerializeField]
+    private Texture examineGamepad;
+
+    [SerializeField]
+    private Texture interactGamepad;
+
+    // Menus
+    private WelcomeMenu welcomeMenu;
+
+    private InputMenu inputMenu;
+
+    public GameplayMenu gameplayMenu;
+
+    private InteractMenu interactMenu;
+
+    // Components
+    private AudioSource audioSource;
+
     private EventSystem eventSystem;
 
+    private FirstPersonPlayer player;
 
-    // Audio components
-    [SerializeField]
-    private AudioClip menuClick;
-
-    private AudioSource audioSource;
+    private FirstPersonPlayer.InputMode previousInput;
 
     private void Start()
     {
+        welcomeMenu = GetComponentInChildren<WelcomeMenu>();
+        welcomeMenu.gameObject.SetActive(true);
+
+        inputMenu = GetComponentInChildren<InputMenu>();
+        inputMenu.gameObject.SetActive(false);
+
+        gameplayMenu = GetComponentInChildren<GameplayMenu>();
+        gameplayMenu.gameObject.SetActive(false);
+
+        interactMenu = GetComponentInChildren<InteractMenu>();
+        interactMenu.gameObject.SetActive(false);
+
         audioSource = GetComponent<AudioSource>();
+        eventSystem = GetComponent<EventSystem>();
+        player = GetComponentInParent<FirstPersonPlayer>();
 
-        welcomeMenu.SetActive(true);
-        inputMenu.SetActive(false);
-        gameplayMenu.SetActive(false);
-        interactMenu.SetActive(false);
-
-        hint.gameObject.SetActive(false);
-
-        eventSystem.SetSelectedGameObject(enterButton.gameObject);
+        SetFocusedButton(welcomeMenu.pressEnterButton);
     }
 
     private void Update()
     {
-        if (gameplayMenu.activeSelf)
-        {
+        if (gameplayMenu.gameObject.activeSelf)
             RayCast();
-        }
     }
 
-    public void EnterButtonPressed()
+    public void PressEnterButtonSelected()
     {
-        welcomeMenu.SetActive(false);
-        inputMenu.SetActive(true);
+        SwapMenus(welcomeMenu.gameObject, inputMenu.gameObject);
 
-        eventSystem.SetSelectedGameObject(keyboardButton.gameObject);
+        SetFocusedButton(inputMenu.keyboardButton);
 
         audioSource.PlayOneShot(menuClick);
     }
 
-    public void KeyboardButtonPressed()
+    public void KeyboardButtonSelected()
     {
-        inputMenu.SetActive(false);
-        gameplayMenu.SetActive(true);
+        SwapMenus(inputMenu.gameObject, gameplayMenu.gameObject);
 
         player.inputMode = FirstPersonPlayer.InputMode.Keyboard;
-        previousMode = FirstPersonPlayer.InputMode.Keyboard;
+        previousInput = player.inputMode;
 
         audioSource.PlayOneShot(menuClick);
     }
 
-    public void GamepadButtonPressed()
+    public void GamepadButtonSelected()
     {
-        inputMenu.SetActive(false);
-        gameplayMenu.SetActive(true);
+        SwapMenus(inputMenu.gameObject, gameplayMenu.gameObject);
 
         player.inputMode = FirstPersonPlayer.InputMode.Gamepad;
-        previousMode = FirstPersonPlayer.InputMode.Gamepad;
+        previousInput = player.inputMode;
 
         audioSource.PlayOneShot(menuClick);
     }
 
     public void ActivateInteractMenu()
     {
-        gameplayMenu.SetActive(false);
-        interactMenu.SetActive(true);
+        SwapMenus(gameplayMenu.gameObject, interactMenu.gameObject);
 
         player.inputMode = FirstPersonPlayer.InputMode.Null;
 
-        eventSystem.SetSelectedGameObject(exitButton.gameObject);
-        exitButton.OnSelect(null);
+        SetFocusedButton(interactMenu.exitButton);
     }
 
     public void DeactivateInteractMenu()
     {
-        interactMenu.SetActive(false);
-        gameplayMenu.SetActive(true);
+        SwapMenus(interactMenu.gameObject, gameplayMenu.gameObject);
 
-        player.inputMode = previousMode;
+        player.inputMode = previousInput;
     }
 
+    // Find if the player is looking at an interactable object
     private void RayCast()
     {
-        Ray ray = camera.ScreenPointToRay(reticle.transform.position);
+        Ray ray = camera.ScreenPointToRay(gameplayMenu.reticle.transform.position);
         RaycastHit raycastHit;
 
         if (Physics.Raycast(ray, out raycastHit, raycastDistance, interactableLayer))
         {
             focussedObject = raycastHit.transform.gameObject;
 
-            reticle.color = Color.yellow;
+            gameplayMenu.reticle.color = Color.yellow;
 
-            hint.gameObject.SetActive(true);
+            gameplayMenu.hint.gameObject.SetActive(true);
 
-            examineAction.SetActive(true);
-            interactAction.SetActive(true);
-            if (focussedObject.gameObject.CompareTag("Static"))
-                interactAction.GetComponentInChildren<TMP_Text>().SetText("INTERACT");
-            else
-                interactAction.GetComponentInChildren<TMP_Text>().SetText("GRAB");
+            gameplayMenu.examineAction.SetActive(true);
+            gameplayMenu.interactAction.SetActive(true);
 
-            switch(player.inputMode)
-            {
-                case FirstPersonPlayer.InputMode.Keyboard:
-                    examineActionimage.texture = examineKeyboard.texture;
-                    interactActionImage.texture = interactKeyboard.texture;
-                    break;
-                case FirstPersonPlayer.InputMode.Gamepad:
-                    examineActionimage.texture = examineGamepad.texture;
-                    interactActionImage.texture = interactGamepad.texture;
-                    break;
-                default:
-                    break;
-            }
+            SetGameplayMenuVariables();
         }
         else
         {
             focussedObject = null;
 
-            reticle.color = Color.white;
+            gameplayMenu.reticle.color = Color.white;
 
-            hint.SetText(" ");
-            hint.gameObject.SetActive(false);
+            gameplayMenu.hint.SetText(" ");
+            gameplayMenu.hint.gameObject.SetActive(false);
 
-            examineAction.SetActive(false);
-            interactAction.SetActive(false);
+            gameplayMenu.examineAction.SetActive(false);
+            gameplayMenu.interactAction.SetActive(false);
+        }
+    }
+
+    // Swap menus in the UI
+    private void SwapMenus(GameObject previousMenu, GameObject nextMenu)
+    {
+        previousMenu.SetActive(false);
+        nextMenu.SetActive(true);
+    }
+
+    // Set which button will be highlighted after switching menus
+    private void SetFocusedButton(Button button)
+    {
+        eventSystem.SetSelectedGameObject(button.gameObject);
+        button.OnSelect(null);
+    }
+
+    // Set how the gameplay menu will appear 
+    private void SetGameplayMenuVariables()
+    {
+        if (focussedObject.gameObject.CompareTag("Static"))
+        {
+            gameplayMenu.interactCommand.SetText("INTERACT");
+            gameplayMenu.interactDescription.SetText("(tap)");
+        }
+        else
+        {
+            gameplayMenu.interactCommand.SetText("GRAB");
+            gameplayMenu.interactDescription.SetText("(hold)");
+        }
+
+        switch (player.inputMode)
+        {
+            case FirstPersonPlayer.InputMode.Keyboard:
+                gameplayMenu.examineIcon.texture = examineKeyboard;
+                gameplayMenu.interactIcon.texture = interactKeyboard;
+                break;
+            case FirstPersonPlayer.InputMode.Gamepad:
+                gameplayMenu.examineIcon.texture = examineGamepad;
+                gameplayMenu.interactIcon.texture = interactGamepad;
+                break;
+            default:
+                break;
         }
     }
 }
