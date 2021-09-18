@@ -51,6 +51,8 @@ public class PlayerUI : MonoBehaviour
 
     private EventSystem eventSystem;
 
+    private Animator animator;
+
     private FirstPersonPlayer player;
 
     private FirstPersonPlayer.InputMode previousInput;
@@ -58,7 +60,7 @@ public class PlayerUI : MonoBehaviour
     private void Start()
     {
         welcomeMenu = GetComponentInChildren<WelcomeMenu>();
-        welcomeMenu.gameObject.SetActive(true);
+        welcomeMenu.gameObject.SetActive(false);
 
         inputMenu = GetComponentInChildren<InputMenu>();
         inputMenu.gameObject.SetActive(false);
@@ -72,6 +74,7 @@ public class PlayerUI : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         eventSystem = GetComponent<EventSystem>();
         player = GetComponentInParent<FirstPersonPlayer>();
+        animator = GetComponent<Animator>();
 
         SetFocusedButton(welcomeMenu.pressEnterButton);
     }
@@ -82,6 +85,11 @@ public class PlayerUI : MonoBehaviour
             RayCast();
     }
 
+    public void StartGame()
+    {
+        welcomeMenu.gameObject.SetActive(true);
+    }
+
     public void PressEnterButtonSelected()
     {
         SwapMenus(welcomeMenu.gameObject, inputMenu.gameObject);
@@ -89,6 +97,8 @@ public class PlayerUI : MonoBehaviour
         SetFocusedButton(inputMenu.keyboardButton);
 
         audioSource.PlayOneShot(menuClick);
+
+        animator.SetTrigger("Fade");
     }
 
     public void KeyboardButtonSelected()

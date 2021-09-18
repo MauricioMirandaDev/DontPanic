@@ -536,6 +536,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 290170042, guid: e83b261cabb26e5419ef100d172d2644, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f3d630d4a2d369f4c9e30ffc122c25ce, type: 2}
     - target: {fileID: 5264555078495093998, guid: e83b261cabb26e5419ef100d172d2644,
         type: 3}
       propertyPath: countdown
