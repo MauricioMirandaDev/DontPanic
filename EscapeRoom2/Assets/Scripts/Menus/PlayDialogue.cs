@@ -12,6 +12,12 @@ public class PlayDialogue : MonoBehaviour
     private string intro_01_Text;
 
     [SerializeField]
+    private AudioClip gameOver_Smoke;
+
+    [SerializeField]
+    private AudioClip gameOver_Coughing;
+
+    [SerializeField]
     private TMP_Text dialogueBox;
 
     private AudioSource audioSource;
@@ -25,5 +31,11 @@ public class PlayDialogue : MonoBehaviour
     {
         audioSource.PlayOneShot(intro_01_Dialogue);
         dialogueBox.SetText(intro_01_Text);
+    }
+
+    public void PlayGameOverAudio()
+    {
+        audioSource.PlayOneShot(gameOver_Smoke);
+        audioSource.PlayOneShot(gameOver_Coughing);
     }
 }

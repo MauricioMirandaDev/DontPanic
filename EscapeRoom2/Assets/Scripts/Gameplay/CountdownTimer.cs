@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UB.Simple2dWeatherEffects.Standard;
 using TMPro;
 
 public class CountdownTimer : MonoBehaviour
@@ -12,11 +13,20 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField]
     private TMP_Text display;
 
+    [SerializeField]
+    private FirstPersonPlayer player;
+
+    [SerializeField]
+    private PlayerUI playerUI;
+
+    [SerializeField]
+    private D2FogsPE fog;
+
     private float actualTime;
 
     private void Start()
     {
-        actualTime = (float)timeLimit * 60.0f;
+        actualTime = (float)timeLimit * 10.0f;
 
         this.gameObject.SetActive(false);
     }
@@ -28,7 +38,7 @@ public class CountdownTimer : MonoBehaviour
             if (actualTime > 0)
                 actualTime -= Time.deltaTime;
             else
-                actualTime = 0;
+                GameOver();
 
             Countdown();
         }
@@ -41,5 +51,14 @@ public class CountdownTimer : MonoBehaviour
         float miliseconds = (actualTime % 1.0f) * 100.0f;
 
         display.SetText(string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, miliseconds));
+    }
+
+    private void GameOver()
+    {
+        actualTime = 0;
+
+        player.inputMode = FirstPersonPlayer.InputMode.Null;
+        fog.enabled = true;
+        playerUI.DeactivateUI();
     }
 }

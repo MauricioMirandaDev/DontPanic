@@ -97,8 +97,6 @@ public class PlayerUI : MonoBehaviour
         SetFocusedButton(inputMenu.keyboardButton);
 
         audioSource.PlayOneShot(menuClick);
-
-        animator.SetTrigger("Fade");
     }
 
     public void KeyboardButtonSelected()
@@ -137,6 +135,16 @@ public class PlayerUI : MonoBehaviour
         SwapMenus(interactMenu.gameObject, gameplayMenu.gameObject);
 
         player.inputMode = previousInput;
+    }
+
+    public void DeactivateUI()
+    {
+        welcomeMenu.gameObject.SetActive(false);
+        inputMenu.gameObject.SetActive(false);
+        gameplayMenu.gameObject.SetActive(false);
+        interactMenu.gameObject.SetActive(false);
+
+        animator.SetTrigger("GameOver");
     }
 
     // Find if the player is looking at an interactable object

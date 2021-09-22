@@ -1409,7 +1409,7 @@ MonoBehaviour:
     type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018,
     type: 3}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
 --- !u!114 &5264555078495093998
 MonoBehaviour:
@@ -1469,6 +1469,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intro_01_Dialogue: {fileID: 8300000, guid: 15e3d24f7898eb9458a935e5fbdac84b, type: 3}
   intro_01_Text: 'What''s going on? Where am I? '
+  gameOver_Smoke: {fileID: 8300000, guid: f84e16e44bedd6b4eadd69c52f490ca4, type: 3}
+  gameOver_Coughing: {fileID: 8300000, guid: 3a3f7e6e6ba955f4da03c53a90d138fd, type: 3}
   dialogueBox: {fileID: 1352433552}
 --- !u!1 &5910197102893665449
 GameObject:
@@ -3193,6 +3195,7 @@ GameObject:
   - component: {fileID: 5910197104255958946}
   - component: {fileID: 5910197104255958949}
   - component: {fileID: 5910197104255958948}
+  - component: {fileID: 1682402560}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -3265,6 +3268,26 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5910197104255958951}
   m_Enabled: 1
+--- !u!114 &1682402560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910197104255958951}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8b48a1929bd42fc8a74e9281c1f25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CamTransform: {fileID: 5910197104255958946}
+  CameraSpeedMultiplier: 5
+  Color: {r: 1, g: 1, b: 1, a: 1}
+  Size: 1
+  HorizontalSpeed: 0.2
+  VerticalSpeed: 0
+  Density: 1
+  Shader: {fileID: 4800000, guid: 00e888b8dfe2842c1a10e04b2d083b64, type: 3}
 --- !u!1 &5910197104295320952
 GameObject:
   m_ObjectHideFlags: 0
