@@ -1,26 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UB.Simple2dWeatherEffects.Standard;
 using TMPro;
 
 public class CountdownTimer : MonoBehaviour
 {
+    public bool isGameOver = false;
+
     [SerializeField]
     private int timeLimit = 1;
 
     [SerializeField]
     private TMP_Text display;
-
-    [SerializeField]
-    private FirstPersonPlayer player;
-
-    [SerializeField]
-    private PlayerUI playerUI;
-
-    [SerializeField]
-    private D2FogsPE fog;
 
     private float actualTime;
 
@@ -38,7 +29,10 @@ public class CountdownTimer : MonoBehaviour
             if (actualTime > 0)
                 actualTime -= Time.deltaTime;
             else
-                GameOver();
+            {
+                actualTime = 0;
+                isGameOver = true;
+            }
 
             Countdown();
         }
@@ -51,14 +45,5 @@ public class CountdownTimer : MonoBehaviour
         float miliseconds = (actualTime % 1.0f) * 100.0f;
 
         display.SetText(string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, miliseconds));
-    }
-
-    private void GameOver()
-    {
-        actualTime = 0;
-
-        player.inputMode = FirstPersonPlayer.InputMode.Null;
-        fog.enabled = true;
-        playerUI.DeactivateUI();
     }
 }

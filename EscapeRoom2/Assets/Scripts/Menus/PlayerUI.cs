@@ -39,22 +39,15 @@ public class PlayerUI : MonoBehaviour
 
     // Menus
     private WelcomeMenu welcomeMenu;
-
     private InputMenu inputMenu;
-
     public GameplayMenu gameplayMenu;
-
     private InteractMenu interactMenu;
 
     // Components
     private AudioSource audioSource;
-
     private EventSystem eventSystem;
-
     private Animator animator;
-
     private FirstPersonPlayer player;
-
     private FirstPersonPlayer.InputMode previousInput;
 
     private void Start()

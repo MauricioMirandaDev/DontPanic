@@ -17,12 +17,6 @@ public class LookControl : MonoBehaviour
 
     private float rotation;
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
     // Controls horizontal look rotation
     public void LookHorizontal(float mouseX)
     {

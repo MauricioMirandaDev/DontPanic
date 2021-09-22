@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fef04b243efa8ff489b4619ed68d139d
+guid: ab6ebbadd5d01ad41865c4ea1135a73b
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Abril Fatface
+  fontName: Koh Santepheap
   fontNames:
-  - Abril Fatface
+  - Koh Santepheap
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
