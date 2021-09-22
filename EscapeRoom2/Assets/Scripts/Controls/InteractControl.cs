@@ -4,27 +4,51 @@ using UnityEngine;
 
 public class InteractControl : MonoBehaviour
 {
-    public GameObject selectedObject;
+    [SerializeField]
+    private GameObject player;
 
     [SerializeField]
     private Transform grabPosition;
 
-    public void Grab()
+    private PlayerUI playerUI;
+
+    private void Start()
     {
-        if (selectedObject != null)
+        playerUI = GetComponentInChildren<PlayerUI>();
+    }
+
+    public void DisplayHint()
+    {
+        if (playerUI.focussedObject != null)
+            playerUI.gameplayMenu.hint.SetText(playerUI.focussedObject.GetComponent<Interactable>().playerHint);     
+    }
+
+    public void InteractAction()
+    {
+        if (playerUI.focussedObject != null && playerUI.focussedObject.layer == 9)
+            playerUI.ActivateInteractMenu();
+    }
+
+    public void GrabAction()
+    {
+        if (playerUI.focussedObject != null && playerUI.focussedObject.layer == 10)
         {
-            selectedObject.transform.parent = GameObject.Find("FirstPersonCharacter").transform;
-            selectedObject.transform.position = grabPosition.position;
-            selectedObject.GetComponent<Rigidbody>().useGravity = false;
+            playerUI.gameplayMenu.gameObject.SetActive(false);
+
+            playerUI.focussedObject.transform.parent = player.transform;
+            playerUI.focussedObject.transform.position = grabPosition.position;
+            playerUI.focussedObject.GetComponent<Rigidbody>().useGravity = false;
         }
     }
 
     public void LetGo()
     {
-        if (selectedObject != null)
+        if (playerUI.focussedObject != null && playerUI.focussedObject.layer == 10)
         {
-            selectedObject.transform.parent = null;
-            selectedObject.GetComponent<Rigidbody>().useGravity = true;
+            playerUI.gameplayMenu.gameObject.SetActive(true);
+
+            playerUI.focussedObject.transform.parent = null;
+            playerUI.focussedObject.GetComponent<Rigidbody>().useGravity = true;
         }
     }
 }

@@ -20,7 +20,10 @@ public class PlayerUI : MonoBehaviour
     private GameObject countdown;
 
     [SerializeField]
-    private LayerMask interactableLayer;
+    private LayerMask staticLayer;
+
+    [SerializeField]
+    private LayerMask moveableLayer;
 
     [SerializeField]
     private float raycastDistance = 1.0f;
@@ -146,30 +149,23 @@ public class PlayerUI : MonoBehaviour
         Ray ray = camera.ScreenPointToRay(gameplayMenu.reticle.transform.position);
         RaycastHit raycastHit;
 
-        if (Physics.Raycast(ray, out raycastHit, raycastDistance, interactableLayer))
+        if (Physics.Raycast(ray, out raycastHit, raycastDistance, staticLayer))
         {
             focussedObject = raycastHit.transform.gameObject;
 
-            gameplayMenu.reticle.color = Color.yellow;
+            SetGameplayMenuVariables(Color.yellow, true, "INTERACT", "(tap)");
+        }
+        else if (Physics.Raycast(ray, out raycastHit, raycastDistance, moveableLayer))
+        {
+            focussedObject = raycastHit.transform.gameObject;
 
-            gameplayMenu.hint.gameObject.SetActive(true);
-
-            gameplayMenu.examineAction.SetActive(true);
-            gameplayMenu.interactAction.SetActive(true);
-
-            SetGameplayMenuVariables();
+            SetGameplayMenuVariables(Color.red, true, "GRAB", "(hold)");
         }
         else
         {
             focussedObject = null;
 
-            gameplayMenu.reticle.color = Color.white;
-
-            gameplayMenu.hint.SetText(" ");
-            gameplayMenu.hint.gameObject.SetActive(false);
-
-            gameplayMenu.examineAction.SetActive(false);
-            gameplayMenu.interactAction.SetActive(false);
+            SetGameplayMenuVariables(Color.white, false, " ", " ");
         }
     }
 
@@ -188,18 +184,20 @@ public class PlayerUI : MonoBehaviour
     }
 
     // Set how the gameplay menu will appear 
-    private void SetGameplayMenuVariables()
+    private void SetGameplayMenuVariables(Color reticleColor, bool activateObject, string interactCommand, string interactDescription)
     {
-        if (focussedObject.gameObject.CompareTag("Static"))
-        {
-            gameplayMenu.interactCommand.SetText("INTERACT");
-            gameplayMenu.interactDescription.SetText("(tap)");
-        }
-        else
-        {
-            gameplayMenu.interactCommand.SetText("GRAB");
-            gameplayMenu.interactDescription.SetText("(hold)");
-        }
+        gameplayMenu.reticle.color = reticleColor;
+
+        if (!activateObject)
+            gameplayMenu.hint.SetText(" ");
+
+        gameplayMenu.hint.gameObject.SetActive(activateObject);
+
+        gameplayMenu.examineAction.SetActive(activateObject);
+        gameplayMenu.interactAction.SetActive(activateObject);
+
+        gameplayMenu.interactCommand.SetText(interactCommand);
+        gameplayMenu.interactDescription.SetText(interactDescription);
 
         switch (player.inputMode)
         {
