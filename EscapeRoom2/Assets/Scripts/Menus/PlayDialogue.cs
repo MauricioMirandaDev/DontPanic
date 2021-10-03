@@ -5,11 +5,7 @@ using TMPro;
 
 public class PlayDialogue : MonoBehaviour
 {
-    [SerializeField]
-    private AudioClip intro_01_Dialogue;
 
-    [SerializeField]
-    private string intro_01_Text;
 
     [SerializeField]
     private AudioClip gameOver_Smoke;
@@ -27,10 +23,14 @@ public class PlayDialogue : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayDiaglogue_Intro_01()
+    public void PlayAudio(AudioClip audio)
     {
-        audioSource.PlayOneShot(intro_01_Dialogue);
-        dialogueBox.SetText(intro_01_Text);
+        audioSource.PlayOneShot(audio);
+    }
+
+    public void DisplayText(string text)
+    {
+        dialogueBox.SetText(text);
     }
 
     public void PlayGameOverAudio()

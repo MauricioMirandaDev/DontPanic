@@ -9,6 +9,6 @@ public class InteractMenu : MonoBehaviour
 
     private void Start()
     {
-        this.gameObject.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

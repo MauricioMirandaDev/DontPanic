@@ -8,8 +8,11 @@ public class FirstPersonPlayer : MonoBehaviour
     public enum InputMode { Keyboard, Gamepad, Null };
     public InputMode inputMode;
 
-    [SerializeField]
-    private Transform grabPosition;
+    public AudioSource playerAudioSource;
+
+    public PlayerUI playerUI;
+
+    public Transform grabPosition;
 
     [SerializeField]
     private CountdownTimer countdown;
@@ -18,7 +21,6 @@ public class FirstPersonPlayer : MonoBehaviour
     private LookControl lookControl;
     private KeyboardInput keyboardInput;
     private GamepadInput gamepadInput;
-    private PlayerUI playerUI;
     private PlayerAnimation playerAnimation;
     private D2FogsPE knockoutGas;
 
@@ -26,6 +28,9 @@ public class FirstPersonPlayer : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        playerAudioSource = GetComponent<AudioSource>();
+        playerUI = GetComponentInChildren<PlayerUI>();
 
         movementControl = GetComponent<MovementControl>();
         lookControl = GetComponent<LookControl>();
@@ -35,8 +40,6 @@ public class FirstPersonPlayer : MonoBehaviour
 
         gamepadInput = GetComponent<GamepadInput>();
         gamepadInput.enabled = false;
-
-        playerUI = GetComponentInChildren<PlayerUI>();
 
         playerAnimation = GetComponentInChildren<PlayerAnimation>();
 

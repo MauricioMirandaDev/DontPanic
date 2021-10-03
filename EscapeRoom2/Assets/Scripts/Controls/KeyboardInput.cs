@@ -41,12 +41,11 @@ public class KeyboardInput : InputComponent
 
     protected override void Examine(InputAction.CallbackContext callbackContext)
     {
-        interactControl.DisplayHint();
+        interactControl.ExamineAction();
     }
 
     protected override void Interact(InputAction.CallbackContext callbackContext)
     {
-        
         if (callbackContext.interaction is TapInteraction)
             interactControl.InteractAction();
         else if (callbackContext.interaction is HoldInteraction)

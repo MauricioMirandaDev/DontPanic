@@ -9,6 +9,10 @@ public class PlayerUI : MonoBehaviour
 {
     public GameObject focussedObject;
 
+    public GameplayMenu gameplayMenu;
+
+    public FirstPersonPlayer.InputMode previousInput;
+
     // Variables
     [SerializeField]
     private AudioClip menuClick;
@@ -43,15 +47,12 @@ public class PlayerUI : MonoBehaviour
     // Menus
     private WelcomeMenu welcomeMenu;
     private InputMenu inputMenu;
-    public GameplayMenu gameplayMenu;
-    private InteractMenu interactMenu;
 
     // Components
-    private AudioSource audioSource;
+    private AudioSource uiAudioSource;
     private EventSystem eventSystem;
     private Animator animator;
     private FirstPersonPlayer player;
-    private FirstPersonPlayer.InputMode previousInput;
 
     private void Start()
     {
@@ -64,10 +65,7 @@ public class PlayerUI : MonoBehaviour
         gameplayMenu = GetComponentInChildren<GameplayMenu>();
         gameplayMenu.gameObject.SetActive(false);
 
-        interactMenu = GetComponentInChildren<InteractMenu>();
-        interactMenu.gameObject.SetActive(false);
-
-        audioSource = GetComponent<AudioSource>();
+        uiAudioSource = GetComponent<AudioSource>();
         eventSystem = GetComponent<EventSystem>();
         player = GetComponentInParent<FirstPersonPlayer>();
         animator = GetComponent<Animator>();
@@ -92,7 +90,7 @@ public class PlayerUI : MonoBehaviour
 
         SetFocusedButton(inputMenu.keyboardButton);
 
-        audioSource.PlayOneShot(menuClick);
+        uiAudioSource.PlayOneShot(menuClick);
     }
 
     public void KeyboardButtonSelected()
@@ -104,7 +102,7 @@ public class PlayerUI : MonoBehaviour
 
         countdown.SetActive(true);
 
-        audioSource.PlayOneShot(menuClick);
+        uiAudioSource.PlayOneShot(menuClick);
     }
 
     public void GamepadButtonSelected()
@@ -114,23 +112,22 @@ public class PlayerUI : MonoBehaviour
         player.inputMode = FirstPersonPlayer.InputMode.Gamepad;
         previousInput = player.inputMode;
 
-        audioSource.PlayOneShot(menuClick);
+        uiAudioSource.PlayOneShot(menuClick);
     }
 
-    public void ActivateInteractMenu()
+
+    // Swap menus in the UI
+    public void SwapMenus(GameObject previousMenu, GameObject nextMenu)
     {
-        SwapMenus(gameplayMenu.gameObject, interactMenu.gameObject);
-
-        player.inputMode = FirstPersonPlayer.InputMode.Null;
-
-        SetFocusedButton(interactMenu.exitButton);
+        previousMenu.SetActive(false);
+        nextMenu.SetActive(true);
     }
 
-    public void DeactivateInteractMenu()
+    // Set which button will be highlighted after switching menus
+    public void SetFocusedButton(Button button)
     {
-        SwapMenus(interactMenu.gameObject, gameplayMenu.gameObject);
-
-        player.inputMode = previousInput;
+        eventSystem.SetSelectedGameObject(button.gameObject);
+        button.OnSelect(null);
     }
 
     public void DeactivateUI()
@@ -138,7 +135,6 @@ public class PlayerUI : MonoBehaviour
         welcomeMenu.gameObject.SetActive(false);
         inputMenu.gameObject.SetActive(false);
         gameplayMenu.gameObject.SetActive(false);
-        interactMenu.gameObject.SetActive(false);
 
         animator.SetTrigger("GameOver");
     }
@@ -159,7 +155,7 @@ public class PlayerUI : MonoBehaviour
         {
             focussedObject = raycastHit.transform.gameObject;
 
-            SetGameplayMenuVariables(Color.red, true, "GRAB", "(hold)");
+            SetGameplayMenuVariables(Color.magenta, true, "GRAB", "(hold)");
         }
         else
         {
@@ -169,24 +165,10 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    // Swap menus in the UI
-    private void SwapMenus(GameObject previousMenu, GameObject nextMenu)
-    {
-        previousMenu.SetActive(false);
-        nextMenu.SetActive(true);
-    }
-
-    // Set which button will be highlighted after switching menus
-    private void SetFocusedButton(Button button)
-    {
-        eventSystem.SetSelectedGameObject(button.gameObject);
-        button.OnSelect(null);
-    }
-
     // Set how the gameplay menu will appear 
-    private void SetGameplayMenuVariables(Color reticleColor, bool activateObject, string interactCommand, string interactDescription)
+    private void SetGameplayMenuVariables(Color color, bool activateObject, string interactCommand, string interactDescription)
     {
-        gameplayMenu.reticle.color = reticleColor;
+        gameplayMenu.reticle.color = color;
 
         if (!activateObject)
             gameplayMenu.hint.SetText(" ");
@@ -197,7 +179,11 @@ public class PlayerUI : MonoBehaviour
         gameplayMenu.interactAction.SetActive(activateObject);
 
         gameplayMenu.interactCommand.SetText(interactCommand);
+        gameplayMenu.interactCommand.color = color;
         gameplayMenu.interactDescription.SetText(interactDescription);
+        gameplayMenu.interactDescription.color = color;
+
+        gameplayMenu.interactIcon.color = color;
 
         switch (player.inputMode)
         {

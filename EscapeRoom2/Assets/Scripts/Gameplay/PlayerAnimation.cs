@@ -7,12 +7,12 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField]
     private AudioClip footstep;
 
-    private AudioSource audioSource;
+    private AudioSource modelAudioSource;
     private Animator animator;
 
     private void Start()
     {
-        audioSource = GetComponentInParent<AudioSource>();
+        modelAudioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
@@ -30,7 +30,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayFootstep()
     {
-        audioSource.pitch = Random.Range(0.7f, 1.2f);
-        audioSource.PlayOneShot(footstep);
+        modelAudioSource.pitch = Random.Range(0.7f, 1.2f);
+        modelAudioSource.PlayOneShot(footstep);
     }
 }

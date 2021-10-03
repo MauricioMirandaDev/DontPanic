@@ -4,5 +4,18 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public string playerHint;
+    [SerializeField]
+    private string playerHint;
+
+    protected FirstPersonPlayer player;
+
+    private void Start()
+    {
+        player = GameObject.Find("FirstPersonCharacter").GetComponent<FirstPersonPlayer>();
+    }
+
+    public void ProvideHint()
+    {
+        player.playerUI.gameplayMenu.hint.SetText(playerHint);
+    }
 }

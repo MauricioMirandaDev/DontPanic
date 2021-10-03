@@ -41,7 +41,7 @@ public class GamepadInput : InputComponent
 
     protected override void Examine(InputAction.CallbackContext callbackContext)
     {
-        interactControl.DisplayHint();
+        interactControl.ExamineAction();
     }
 
     protected override void Interact(InputAction.CallbackContext callbackContext)

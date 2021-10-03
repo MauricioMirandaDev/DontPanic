@@ -5,50 +5,39 @@ using UnityEngine;
 public class InteractControl : MonoBehaviour
 {
     [SerializeField]
-    private GameObject player;
+    private FirstPersonPlayer firstPersonPlayer;
 
     [SerializeField]
     private Transform grabPosition;
 
-    private PlayerUI playerUI;
+    private Interactable interactableObject;
 
     private void Start()
     {
-        playerUI = GetComponentInChildren<PlayerUI>();
+        firstPersonPlayer = GetComponent<FirstPersonPlayer>();
     }
 
-    public void DisplayHint()
+    public void ExamineAction()
     {
-        if (playerUI.focussedObject != null)
-            playerUI.gameplayMenu.hint.SetText(playerUI.focussedObject.GetComponent<Interactable>().playerHint);     
+        if (firstPersonPlayer.playerUI.focussedObject != null)
+            firstPersonPlayer.playerUI.focussedObject.GetComponent<Interactable>().ProvideHint();
     }
 
     public void InteractAction()
     {
-        if (playerUI.focussedObject != null && playerUI.focussedObject.layer == 9)
-            playerUI.ActivateInteractMenu();
+        if (firstPersonPlayer.playerUI.focussedObject != null && firstPersonPlayer.playerUI.focussedObject.layer == 9)
+            firstPersonPlayer.playerUI.focussedObject.GetComponent<StaticInteractable>().InteractAction();
     }
 
     public void GrabAction()
     {
-        if (playerUI.focussedObject != null && playerUI.focussedObject.layer == 10)
-        {
-            playerUI.gameplayMenu.gameObject.SetActive(false);
-
-            playerUI.focussedObject.transform.parent = player.transform;
-            playerUI.focussedObject.transform.position = grabPosition.position;
-            playerUI.focussedObject.GetComponent<Rigidbody>().useGravity = false;
-        }
+        if (firstPersonPlayer.playerUI.focussedObject != null && firstPersonPlayer.playerUI.focussedObject.layer == 10)
+            firstPersonPlayer.playerUI.focussedObject.GetComponent<MoveableInteractable>().PickUp();
     }
 
     public void LetGo()
     {
-        if (playerUI.focussedObject != null && playerUI.focussedObject.layer == 10)
-        {
-            playerUI.gameplayMenu.gameObject.SetActive(true);
-
-            playerUI.focussedObject.transform.parent = null;
-            playerUI.focussedObject.GetComponent<Rigidbody>().useGravity = true;
-        }
+        if (firstPersonPlayer.playerUI.focussedObject != null && firstPersonPlayer.playerUI.focussedObject.layer == 10)
+            firstPersonPlayer.playerUI.focussedObject.GetComponent<MoveableInteractable>().Drop();
     }
 }
