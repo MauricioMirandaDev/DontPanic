@@ -27,4 +27,9 @@ public class StaticInteractable_Door : StaticInteractable
         doorAnimator.SetTrigger("doorOpen");
         boxCollider.enabled = false;
     }
+
+    public void PlaySoundEffect(AudioClip sound)
+    {
+        player.playerAudioSource.PlayOneShot(sound);
+    }
 }

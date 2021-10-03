@@ -11,12 +11,13 @@ public class PlayerUI : MonoBehaviour
 
     public GameplayMenu gameplayMenu;
 
+    public AudioSource uiAudioSource;
+
     public FirstPersonPlayer.InputMode previousInput;
 
-    // Variables
-    [SerializeField]
-    private AudioClip menuClick;
+    public AudioClip menuClick;
 
+    // Variables
     [SerializeField]
     private new Camera camera;
 
@@ -49,7 +50,6 @@ public class PlayerUI : MonoBehaviour
     private InputMenu inputMenu;
 
     // Components
-    private AudioSource uiAudioSource;
     private EventSystem eventSystem;
     private Animator animator;
     private FirstPersonPlayer player;

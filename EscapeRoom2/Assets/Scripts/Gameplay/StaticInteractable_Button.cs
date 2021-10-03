@@ -8,6 +8,9 @@ public class StaticInteractable_Button : StaticInteractable
     private InteractMenu interactMenu;
 
     [SerializeField]
+    private AudioClip buttonPress;
+
+    [SerializeField]
     private StaticInteractable_Door correspondingDoor;
 
     public override void InteractAction()
@@ -24,13 +27,20 @@ public class StaticInteractable_Button : StaticInteractable
         player.playerUI.SwapMenus(interactMenu.gameObject, player.playerUI.gameplayMenu.gameObject);
 
         player.inputMode = player.playerUI.previousInput;
+
+        player.playerUI.uiAudioSource.PlayOneShot(player.playerUI.menuClick);
     }
 
     public void ButtonPressed()
     {
+        player.playerUI.SwapMenus(interactMenu.gameObject, player.playerUI.gameplayMenu.gameObject);
+
+        player.inputMode = player.playerUI.previousInput;
+
+        player.playerUI.uiAudioSource.PlayOneShot(buttonPress);
+
         correspondingDoor.OpenDoor();
 
-        ExitInteractMenu();
         Destroy(interactMenu.gameObject);
         this.gameObject.layer = 0;
     }
