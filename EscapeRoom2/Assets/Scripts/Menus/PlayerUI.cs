@@ -33,6 +33,9 @@ public class PlayerUI : MonoBehaviour
     private Animator hallwayDoor;
 
     [SerializeField]
+    private BoxCollider hallwayCollider;
+
+    [SerializeField]
     private BackgroundMusic backgroundMusic;
 
     [SerializeField]
@@ -129,6 +132,7 @@ public class PlayerUI : MonoBehaviour
         backgroundMusic.PlayGameMusic();
         uiAudioSource.PlayOneShot(alarm);
         hallwayDoor.SetTrigger("Start");
+        hallwayCollider.enabled = false;
     }
 
 

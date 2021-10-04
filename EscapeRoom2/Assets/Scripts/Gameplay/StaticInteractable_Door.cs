@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class StaticInteractable_Door : StaticInteractable
 {
-    public Animator doorAnimator;
-
     [SerializeField]
     private AudioClip doorLocked;
+
+    private Animator doorAnimator;
 
     private BoxCollider boxCollider;
 
@@ -24,8 +24,14 @@ public class StaticInteractable_Door : StaticInteractable
 
     public void OpenDoor()
     {
-        doorAnimator.SetTrigger("doorOpen");
+        doorAnimator.SetBool("canOpen", true);
         boxCollider.enabled = false;
+    }
+
+    public void CloseDoor()
+    {
+        doorAnimator.SetBool("canOpen", false);
+        boxCollider.enabled = true;
     }
 
     public void PlaySoundEffect(AudioClip sound)
