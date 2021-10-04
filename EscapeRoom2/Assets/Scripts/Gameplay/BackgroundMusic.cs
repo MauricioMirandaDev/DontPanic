@@ -7,6 +7,12 @@ public class BackgroundMusic : MonoBehaviour
     [SerializeField]
     private AudioClip introMusic;
 
+    [SerializeField]
+    private AudioClip startMusic;
+
+    [SerializeField]
+    private AudioClip gameMusic;
+
     private AudioSource bgmAudioSource;
 
     private void Start()
@@ -14,5 +20,19 @@ public class BackgroundMusic : MonoBehaviour
         bgmAudioSource = GetComponent<AudioSource>();
 
         bgmAudioSource.PlayOneShot(introMusic);
+    }
+
+    public void PlayStartMuisc()
+    {
+        bgmAudioSource.Stop();
+
+        bgmAudioSource.PlayOneShot(startMusic);
+    }
+
+    public void PlayGameMusic()
+    {
+        bgmAudioSource.Stop();
+
+        bgmAudioSource.PlayOneShot(gameMusic);
     }
 }

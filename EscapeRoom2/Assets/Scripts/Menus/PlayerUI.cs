@@ -13,6 +13,8 @@ public class PlayerUI : MonoBehaviour
 
     public AudioSource uiAudioSource;
 
+    public Animator animator;
+
     public FirstPersonPlayer.InputMode previousInput;
 
     public AudioClip menuClick;
@@ -23,6 +25,15 @@ public class PlayerUI : MonoBehaviour
 
     [SerializeField]
     private GameObject countdown;
+
+    [SerializeField]
+    private AudioClip alarm;
+
+    [SerializeField]
+    private Animator hallwayDoor;
+
+    [SerializeField]
+    private BackgroundMusic backgroundMusic;
 
     [SerializeField]
     private LayerMask staticLayer;
@@ -51,7 +62,6 @@ public class PlayerUI : MonoBehaviour
 
     // Components
     private EventSystem eventSystem;
-    private Animator animator;
     private FirstPersonPlayer player;
 
     private void Start()
@@ -100,8 +110,6 @@ public class PlayerUI : MonoBehaviour
         player.inputMode = FirstPersonPlayer.InputMode.Keyboard;
         previousInput = player.inputMode;
 
-        countdown.SetActive(true);
-
         uiAudioSource.PlayOneShot(menuClick);
     }
 
@@ -113,6 +121,14 @@ public class PlayerUI : MonoBehaviour
         previousInput = player.inputMode;
 
         uiAudioSource.PlayOneShot(menuClick);
+    }
+
+    public void StartCountdown()
+    {
+        countdown.gameObject.SetActive(true);
+        backgroundMusic.PlayGameMusic();
+        uiAudioSource.PlayOneShot(alarm);
+        hallwayDoor.SetTrigger("Start");
     }
 
 

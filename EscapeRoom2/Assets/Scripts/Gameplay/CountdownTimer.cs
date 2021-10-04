@@ -17,7 +17,7 @@ public class CountdownTimer : MonoBehaviour
 
     private void Start()
     {
-        actualTime = (float)timeLimit * 10.0f;
+        actualTime = (float)timeLimit * 60.0f;
 
         this.gameObject.SetActive(false);
     }
