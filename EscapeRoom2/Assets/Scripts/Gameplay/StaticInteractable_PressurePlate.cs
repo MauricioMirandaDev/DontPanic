@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaticInteractable_PressurePlate : StaticInteractable
+public class StaticInteractable_PressurePlate : StaticInteractable_Mechanism
 {
     [SerializeField]
     private AudioClip plateFloor;
-
-    [SerializeField]
-    private StaticInteractable_Door correspondingDoor;
 
     private float totalMass = 0.0f;
 

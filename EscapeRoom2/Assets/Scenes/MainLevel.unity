@@ -994,7 +994,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: It's a diagram of the color wheel.
+  correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 1343645272}
+  buttonPress: {fileID: 0}
 --- !u!64 &125258861
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3793,16 +3795,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: 'This looks like a keypad. '
+  correspondingDoor: {fileID: 1093417790}
   interactMenu: {fileID: 1570430575}
   buttonPress: {fileID: 8300000, guid: fdd782b1ad293db4abb918007b7aff22, type: 3}
   fail: {fileID: 8300000, guid: fd6293aeb70d2de4cb5de87266ff1353, type: 3}
   pass: {fileID: 8300000, guid: 690f399efe9aa8f4d919259dc223aa58, type: 3}
-  correspondingDoor: {fileID: 1093417790}
-  password: 07000000040000000200000003000000
-  firstNum: {fileID: 1978695048}
-  secondNum: {fileID: 637515902}
-  thirdNum: {fileID: 1526058389}
-  fourthNum: {fileID: 48951172}
+  display: {fileID: 258746090}
+  password: 05000000040000000900000002000000
 --- !u!65 &451563536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4421,7 +4420,7 @@ PrefabInstance:
     - target: {fileID: 5910197103812273036, guid: e83b261cabb26e5419ef100d172d2644,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.007
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 5910197103812273036, guid: e83b261cabb26e5419ef100d172d2644,
         type: 3}
@@ -10474,8 +10473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: This part of the floor is made of a different material.
-  plateFloor: {fileID: 8300000, guid: 623ad07c146cedd4db6b902fd1612618, type: 3}
   correspondingDoor: {fileID: 702490194}
+  plateFloor: {fileID: 8300000, guid: 623ad07c146cedd4db6b902fd1612618, type: 3}
 --- !u!1001 &1248609126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10628,9 +10627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: It looks like a button.
+  correspondingDoor: {fileID: 280229498}
   interactMenu: {fileID: 1906474252}
   buttonPress: {fileID: 8300000, guid: 926455c5574c6174bab7ae04f3491753, type: 3}
-  correspondingDoor: {fileID: 280229498}
 --- !u!65 &1261028068
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15344,7 +15343,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: A motivational poster? For what?
+  correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 1735435945}
+  buttonPress: {fileID: 0}
 --- !u!64 &1771721003
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16944,7 +16945,7 @@ GameObject:
   - component: {fileID: 1979991462}
   - component: {fileID: 1979991461}
   m_Layer: 5
-  m_Name: Button
+  m_Name: OpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
