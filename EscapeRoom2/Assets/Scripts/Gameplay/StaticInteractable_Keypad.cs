@@ -54,7 +54,7 @@ public class StaticInteractable_Keypad : StaticInteractable_MechanismWithUI
                 solved = false;
 
                 for (int j = 0; j < inputDisplay.Length; j++)
-                    inputDisplay[j].SetText("0");
+                    inputDisplay[j].SetText("-");
 
                 player.playerAudioSource.PlayOneShot(fail);
 
