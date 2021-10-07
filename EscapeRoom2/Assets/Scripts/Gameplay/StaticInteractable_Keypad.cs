@@ -44,11 +44,14 @@ public class StaticInteractable_Keypad : StaticInteractable_MechanismWithUI
 
     private void CheckInput()
     {
+        bool solved = false;
+
         for (int i = 0; i < input.Length; i++)
         {
             if (input[i] != password[i])
             {
                 index = 0;
+                solved = false;
 
                 for (int j = 0; j < inputDisplay.Length; j++)
                     inputDisplay[j].SetText("0");
@@ -58,10 +61,13 @@ public class StaticInteractable_Keypad : StaticInteractable_MechanismWithUI
                 break;
             }
             else
-            {
-                player.playerAudioSource.PlayOneShot(pass);
-                PuzzleSolved();
-            }
+                solved = true;
+        }
+
+        if (solved)
+        {
+            player.playerAudioSource.PlayOneShot(pass);
+            PuzzleSolved();
         }
     }
 }
