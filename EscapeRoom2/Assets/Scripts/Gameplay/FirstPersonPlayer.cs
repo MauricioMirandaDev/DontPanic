@@ -17,6 +17,9 @@ public class FirstPersonPlayer : MonoBehaviour
     [SerializeField]
     private CountdownTimer countdown;
 
+    [SerializeField]
+    private BackgroundMusic backgroundMusic;
+
     private MovementControl movementControl;
     private LookControl lookControl;
     private KeyboardInput keyboardInput;
@@ -78,6 +81,7 @@ public class FirstPersonPlayer : MonoBehaviour
         inputMode = InputMode.Null;
         knockoutGas.enabled = true;
         playerUI.DeactivateUI();
+        backgroundMusic.StopMusic();
     }
 
 }

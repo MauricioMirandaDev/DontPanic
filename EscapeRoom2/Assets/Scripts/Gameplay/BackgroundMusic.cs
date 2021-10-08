@@ -35,4 +35,9 @@ public class BackgroundMusic : MonoBehaviour
 
         bgmAudioSource.PlayOneShot(gameMusic);
     }
+
+    public void StopMusic()
+    {
+        bgmAudioSource.Stop();
+    }
 }

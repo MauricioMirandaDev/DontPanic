@@ -7,6 +7,8 @@ public class CountdownTimer : MonoBehaviour
 {
     public bool isGameOver = false;
 
+    public bool playerWon = false;
+
     [SerializeField]
     private int timeLimit = 1;
 
@@ -22,9 +24,14 @@ public class CountdownTimer : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     private void Update()
     {
-        if (this.gameObject.activeSelf)
+        if (this.gameObject.activeSelf && !isGameOver)
         {
             if (actualTime > 0)
                 actualTime -= Time.deltaTime;
@@ -32,6 +39,7 @@ public class CountdownTimer : MonoBehaviour
             {
                 actualTime = 0;
                 isGameOver = true;
+                playerWon = false;
             }
 
             Countdown();

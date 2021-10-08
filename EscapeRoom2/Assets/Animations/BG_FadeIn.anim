@@ -206,7 +206,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2
+    m_StopTime: 6.9666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -367,7 +367,15 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlayGameOverAudio
+    functionName: PlayVoice
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 8e9ed8687f856f545a0c9d35b1eb647a,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 6.9666667
+    functionName: OpenEndingScene
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

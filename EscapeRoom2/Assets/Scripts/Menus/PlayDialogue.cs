@@ -6,12 +6,6 @@ using TMPro;
 public class PlayDialogue : MonoBehaviour
 {
     [SerializeField]
-    private AudioClip gameOver_Smoke;
-
-    [SerializeField]
-    private AudioClip gameOver_Coughing;
-
-    [SerializeField]
     private TMP_Text dialogueBox;
 
     private FirstPersonPlayer player;
@@ -36,11 +30,5 @@ public class PlayDialogue : MonoBehaviour
     public void DisplayText(string text)
     {
         dialogueBox.SetText(text);
-    }
-
-    public void PlayGameOverAudio()
-    {
-        //audioSource.PlayOneShot(gameOver_Smoke);
-        //audioSource.PlayOneShot(gameOver_Coughing);
     }
 }

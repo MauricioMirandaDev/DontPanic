@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerUI : MonoBehaviour
@@ -157,6 +158,11 @@ public class PlayerUI : MonoBehaviour
         gameplayMenu.gameObject.SetActive(false);
 
         animator.SetTrigger("GameOver");
+    }
+
+    public void OpenEndingScene()
+    {
+        SceneManager.LoadScene("Ending");
     }
 
     // Find if the player is looking at an interactable object

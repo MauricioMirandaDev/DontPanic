@@ -19,7 +19,10 @@ public class StaticInteractable_Door : StaticInteractable
 
     public override void InteractAction()
     {
+        player.playerAudioSource.volume = 0.2f;
         player.playerAudioSource.PlayOneShot(doorLocked);
+
+        player.playerAudioSource.volume = 0.8f;
     }
 
     public void OpenDoor()
