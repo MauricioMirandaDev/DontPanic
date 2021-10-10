@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class EndingDialogue : MonoBehaviour
@@ -8,11 +9,14 @@ public class EndingDialogue : MonoBehaviour
     [SerializeField]
     private TMP_Text dialogueBox;
 
-    private AudioSource audioSource;
-
-    private Animator animator;
+    [SerializeField]
+    private CreditsMenu credits;
 
     [SerializeField]
+    private EventSystem eventSystem;
+
+    private AudioSource audioSource;
+    private Animator animator;
     private CountdownTimer countdown;
 
     private void Start()
@@ -37,5 +41,14 @@ public class EndingDialogue : MonoBehaviour
     public void SetEnding()
     {
         animator.SetBool("PlayerWon", countdown.playerWon);
+    }
+
+    public void ShowCredits()
+    {
+        Destroy(countdown.gameObject);
+
+        credits.gameObject.SetActive(true);
+        eventSystem.SetSelectedGameObject(credits.exitButton.gameObject);
+        credits.exitButton.OnSelect(null);
     }
 }
