@@ -11,6 +11,7 @@ public class MoveableInteractable : Interactable
         objectRigidbody = GetComponent<Rigidbody>();
     }
 
+    // Move to the player's grab position
     public void PickUp()
     {
         player.playerUI.gameplayMenu.gameObject.SetActive(false);
@@ -20,6 +21,7 @@ public class MoveableInteractable : Interactable
         this.objectRigidbody.useGravity = false;
     }
 
+    // Drop the floor when player lets go of object
     public void Drop()
     {
         player.playerUI.gameplayMenu.gameObject.SetActive(true);

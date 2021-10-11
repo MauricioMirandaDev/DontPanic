@@ -8,9 +8,11 @@ public class GamepadInput : InputComponent
 {
     private void FixedUpdate()
     {
+        // Set move direction from input
         movementControl.MoveHorizontal(movement.ReadValue<Vector2>().x);
         movementControl.MoveVertical(movement.ReadValue<Vector2>().y);
 
+        // Set look rotation from input
         lookControl.GamepadLookHorizontal(look.ReadValue<Vector2>().x);
         lookControl.GamepadLookVertical(look.ReadValue<Vector2>().y);
     }

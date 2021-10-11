@@ -16,6 +16,7 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    // Update animator whenever the player is moving
     public void SetRunningState(Vector2 keyboardMovement, Vector2 gamepadMovement)
     {
         if (keyboardMovement.Equals(Vector2.zero) && gamepadMovement.Equals(Vector2.zero))

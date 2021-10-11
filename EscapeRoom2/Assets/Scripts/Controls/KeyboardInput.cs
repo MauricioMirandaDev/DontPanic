@@ -8,9 +8,11 @@ public class KeyboardInput : InputComponent
 {
     private void FixedUpdate()
     {
+        // Set move direction from input
         movementControl.MoveHorizontal(movement.ReadValue<Vector2>().x);
         movementControl.MoveVertical(movement.ReadValue<Vector2>().y);
 
+        // Set look rotation from input
         lookControl.LookHorizontal(look.ReadValue<Vector2>().x);
         lookControl.LookVertical(look.ReadValue<Vector2>().y);
     }

@@ -9,12 +9,14 @@ public class CountdownTimer : MonoBehaviour
 
     public bool playerWon = false;
 
+    // How long the player has to win the game
     [SerializeField]
     private int timeLimit = 1;
 
     [SerializeField]
     private TMP_Text display;
 
+    // Length of time in minutes, seconds, miliseconds
     private float actualTime;
 
     private void Start()
@@ -31,6 +33,7 @@ public class CountdownTimer : MonoBehaviour
 
     private void Update()
     {
+        // Decrement the countdown when gameplay starts
         if (this.gameObject.activeSelf && !isGameOver)
         {
             if (actualTime > 0)
@@ -46,6 +49,7 @@ public class CountdownTimer : MonoBehaviour
         }
     }
 
+    // Controls how the countdown is displayed
     private void Countdown()
     {
         int minutes = (int)actualTime / 60;

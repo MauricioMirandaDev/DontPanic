@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ColorTable : MonoBehaviour
 {
+    // Position in the table array from Room3Puzzle
     [SerializeField]
     private int id = 0;
 
+    // The block that belongs in this volume
     [SerializeField]
     private GameObject correspondingBlock;
 

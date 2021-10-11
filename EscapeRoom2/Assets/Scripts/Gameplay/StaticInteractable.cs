@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StaticInteractable : Interactable
 {
+    // Each object's individual behavior
     public virtual void InteractAction()
     {
     }

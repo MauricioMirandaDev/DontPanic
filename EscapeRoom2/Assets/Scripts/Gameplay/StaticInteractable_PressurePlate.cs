@@ -9,6 +9,7 @@ public class StaticInteractable_PressurePlate : StaticInteractable_Mechanism
 
     private float totalMass = 0.0f;
 
+    // Communicate to the player this object can be interacted with
     public override void InteractAction()
     {
         player.playerAudioSource.PlayOneShot(plateFloor);

@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 26.033333
+        time: 26.683332
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -66,7 +66,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 32.533333
+    m_StopTime: 32
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -95,7 +95,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 26.033333
+        time: 26.683332
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -115,6 +115,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
+    functionName: ChangeText
+    data: "And judging from your results, you don\u2019t do well under pressure."
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
     functionName: PlayDialogue
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: 3a7bd3c4cdae73747bda362078aa5b8d,
@@ -122,28 +129,21 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0
-    functionName: ChangeText
-    data: "And judging from your results, you don\u2019t do well under pressure."
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 5
+  - time: 5.483333
     functionName: ChangeText
     data: 'Fuck . . . you. '
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 7
+  - time: 7.9666667
     functionName: ChangeText
     data: "Now, there\u2019s no need for such harsh language Subject 7. "
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 12.016666
+  - time: 12.8
     functionName: ChangeText
     data: "Nonetheless, there\u2019s nothing you can do about it; you signed the
       liability waiver."
@@ -151,28 +151,28 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 18
+  - time: 18.266666
     functionName: ChangeText
     data: 'And besides, you will be rewarded $10,000. '
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 21
+  - time: 21.466667
     functionName: ChangeText
     data: Let me go, I just want to go home.
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 26.033333
+  - time: 26.733334
     functionName: ChangeText
     data: 'You will; but first, we have a couple of following questions to ask. '
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 32.533333
+  - time: 32
     functionName: ShowCredits
     data: 
     objectReferenceParameter: {fileID: 0}

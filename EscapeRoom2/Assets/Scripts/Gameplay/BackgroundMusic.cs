@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class BackgroundMusic : MonoBehaviour
 {
+    // Music that opens the game
     [SerializeField]
     private AudioClip introMusic;
 
+    // Music during the opening sequence
     [SerializeField]
     private AudioClip startMusic;
 
+    // Music during the countdown
     [SerializeField]
     private AudioClip gameMusic;
 

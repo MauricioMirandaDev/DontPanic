@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 26.05
+        time: 25.516666
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -66,7 +66,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 32.466667
+    m_StopTime: 32
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -95,7 +95,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 26.05
+        time: 25.516666
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -129,21 +129,21 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 5
+  - time: 4.7833333
     functionName: ChangeText
-    data: Tch . . . you people are insane.
+    data: You people are insane.
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 8
+  - time: 8.483334
     functionName: ChangeText
     data: "It\u2019s all in the name of science Subject 7. "
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 12
+  - time: 11.5
     functionName: ChangeText
     data: "Nonetheless, there\u2019s nothing you can do about it; you signed the
       liability waiver."
@@ -158,21 +158,21 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 20.033333
+  - time: 20.5
     functionName: ChangeText
     data: Let me go, I just want to go home.
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 26.05
+  - time: 25.516666
     functionName: ChangeText
     data: You will; but first, we have a couple of following questions to ask.
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 32.466667
+  - time: 32
     functionName: ShowCredits
     data: 
     objectReferenceParameter: {fileID: 0}

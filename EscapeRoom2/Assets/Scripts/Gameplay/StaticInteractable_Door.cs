@@ -17,12 +17,10 @@ public class StaticInteractable_Door : StaticInteractable
         boxCollider = GetComponent<BoxCollider>();
     }
 
+    // Communicate to player the door is locked
     public override void InteractAction()
     {
-        player.playerAudioSource.volume = 0.2f;
         player.playerAudioSource.PlayOneShot(doorLocked);
-
-        player.playerAudioSource.volume = 0.8f;
     }
 
     public void OpenDoor()
@@ -37,6 +35,7 @@ public class StaticInteractable_Door : StaticInteractable
         boxCollider.enabled = true;
     }
 
+    // Play open or close sound effect
     public void PlaySoundEffect(AudioClip sound)
     {
         player.playerAudioSource.PlayOneShot(sound);

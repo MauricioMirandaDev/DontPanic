@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
 
 public class InputComponent : MonoBehaviour
 {
@@ -32,10 +31,12 @@ public class InputComponent : MonoBehaviour
         firstPersonInputActions = new FirstPersonInputActions();
     }
 
+    // Examine control
     protected virtual void Examine(InputAction.CallbackContext callbackContext)
     {
     }
 
+    // Interact controls
     protected virtual void Interact(InputAction.CallbackContext callbackContext)
     {
     }

@@ -32,9 +32,11 @@ public class StaticInteractable_Keypad : StaticInteractable_MechanismWithUI
     {
         player.playerUI.uiAudioSource.PlayOneShot(buttonPress);
 
+        // Change display on keypad
         input[index] = value;
         inputDisplay[index].SetText(value.ToString());
 
+        // Check the player's answer
         index++;
         if (index > 3)
         {
@@ -42,6 +44,7 @@ public class StaticInteractable_Keypad : StaticInteractable_MechanismWithUI
         }
     }
 
+    // Determine if the player input the correct code 
     private void CheckInput()
     {
         bool solved = false;

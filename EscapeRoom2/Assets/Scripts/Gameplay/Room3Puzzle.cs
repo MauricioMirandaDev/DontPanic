@@ -9,6 +9,7 @@ public class Room3Puzzle : MonoBehaviour
     [SerializeField]
     private StaticInteractable_Door correspondingDoor;
 
+    // Check if all blocks are in their correct assignment
     public void UpdateArray(int index, bool value)
     {
         tables[index] = value;

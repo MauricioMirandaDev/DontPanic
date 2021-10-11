@@ -17,6 +17,7 @@ public class StartTrigger : MonoBehaviour
         trigger = GetComponent<BoxCollider>();
     }
 
+    // Starts game sequence
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

@@ -7715,14 +7715,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446745794}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 3.1, y: 1, z: -3.01}
-  m_LocalScale: {x: 0.049999997, y: 1, z: 0.049999997}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 2.178, y: 1.685, z: -0.139}
+  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
   m_Children:
   - {fileID: 582607285}
   m_Father: {fileID: 299824297}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &446745796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7735,7 +7735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47f2e79152801f4eb0d0d21829ba0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHint: A bunch of shapes connected.
+  playerHint: A bunch of shapes connected in a specific sequence.
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 582607286}
   buttonPress: {fileID: 0}
@@ -7847,7 +7847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47f2e79152801f4eb0d0d21829ba0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHint: A geometry problem. I need to find angle B.
+  playerHint: A geometry problem. I need to find angle B and divide it by 10.
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 1071018034}
   buttonPress: {fileID: 0}
@@ -9173,6 +9173,16 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 5910197103812273033, guid: e83b261cabb26e5419ef100d172d2644,
+        type: 3}
+      propertyPath: gamepadSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910197103812273033, guid: e83b261cabb26e5419ef100d172d2644,
+        type: 3}
+      propertyPath: mouseSensitivity
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5910197103812273036, guid: e83b261cabb26e5419ef100d172d2644,
         type: 3}
       propertyPath: m_RootOrder
@@ -9266,7 +9276,7 @@ PrefabInstance:
     - target: {fileID: 5910197103812273079, guid: e83b261cabb26e5419ef100d172d2644,
         type: 3}
       propertyPath: m_Volume
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e83b261cabb26e5419ef100d172d2644, type: 3}
@@ -20671,8 +20681,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207265786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.55, y: -0.7, z: -9.45}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 2.178, y: -0.7, z: -8}
+  m_LocalScale: {x: 0.15, y: 0.1, z: 0.15}
   m_Children: []
   m_Father: {fileID: 886574255}
   m_RootOrder: 10
@@ -20688,8 +20698,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 5, z: 0}
+  m_Size: {x: 10, y: 5, z: 10}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!23 &1207265789
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20749,7 +20759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fed0a6a9f4cd904c9c0ad9bd4838e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHint: This part of the floor is made of a different material.
+  playerHint: This opens the door whenver I put weight on it!
   correspondingDoor: {fileID: 702490194}
   plateFloor: {fileID: 8300000, guid: 623ad07c146cedd4db6b902fd1612618, type: 3}
 --- !u!1 &1214697498
@@ -21294,7 +21304,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1261028069
 MeshRenderer:
@@ -29763,7 +29773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47f2e79152801f4eb0d0d21829ba0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHint: A motivational poster? For what?
+  playerHint: A motivational poster? With the word "compliment" emphasized.
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 1735435945}
   buttonPress: {fileID: 0}
@@ -33521,9 +33531,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 0.78431374, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.78431374, b: 0, a: 1}
     m_PressedColor: {r: 0.5882353, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 0.78431374, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0, g: 0.78431374, b: 0, a: 1}
     m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
