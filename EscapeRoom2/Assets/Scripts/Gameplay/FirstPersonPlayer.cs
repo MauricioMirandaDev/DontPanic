@@ -14,6 +14,8 @@ public class FirstPersonPlayer : MonoBehaviour
 
     public Transform grabPosition;
 
+    public CapsuleCollider grahCollider;
+
     [SerializeField]
     private CountdownTimer countdown;
 
@@ -50,6 +52,7 @@ public class FirstPersonPlayer : MonoBehaviour
         knockoutGas.enabled = false;
 
         inputMode = InputMode.Null;
+        grahCollider.enabled = false;
     }
 
     private void FixedUpdate()
