@@ -28,8 +28,11 @@ public class KeyboardInput : InputComponent
         firstPersonInputActions.PlayerKeyboardandMouse.Examine.performed += Examine;
         firstPersonInputActions.PlayerKeyboardandMouse.Examine.Enable();
 
+        firstPersonInputActions.PlayerKeyboardandMouse.Grab.performed += Grab;
+        firstPersonInputActions.PlayerKeyboardandMouse.Grab.canceled += FinishGrab;
+        firstPersonInputActions.PlayerKeyboardandMouse.Grab.Enable();
+
         firstPersonInputActions.PlayerKeyboardandMouse.Interact.performed += Interact;
-        firstPersonInputActions.PlayerKeyboardandMouse.Interact.canceled += FinishInteract;
         firstPersonInputActions.PlayerKeyboardandMouse.Interact.Enable();
     }
 
@@ -38,6 +41,7 @@ public class KeyboardInput : InputComponent
         movement.Disable();
         look.Disable();
         firstPersonInputActions.PlayerKeyboardandMouse.Examine.Disable();
+        firstPersonInputActions.PlayerKeyboardandMouse.Grab.Disable();
         firstPersonInputActions.PlayerKeyboardandMouse.Interact.Disable();
     }
 
@@ -46,16 +50,18 @@ public class KeyboardInput : InputComponent
         interactControl.ExamineAction();
     }
 
-    protected override void Interact(InputAction.CallbackContext callbackContext)
+    protected override void Grab(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.interaction is TapInteraction)
-            interactControl.InteractAction();
-        else if (callbackContext.interaction is HoldInteraction)
-            interactControl.GrabAction();
+        interactControl.GrabAction();
     }
 
-    protected override void FinishInteract(InputAction.CallbackContext callbackContext)
+    protected override void FinishGrab(InputAction.CallbackContext callbackContext)
     {
         interactControl.LetGo();
+    }
+
+    protected override void Interact(InputAction.CallbackContext callbackContext)
+    {
+        interactControl.InteractAction();
     }
 }

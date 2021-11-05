@@ -21,6 +21,7 @@ public class MoveableInteractable : Interactable
 
         this.gameObject.transform.parent = player.transform;
         this.gameObject.transform.position = player.grabPosition.position;
+        this.objectCollider.enabled = false;
         this.objectRigidbody.isKinematic = true;
     }
 
@@ -31,6 +32,7 @@ public class MoveableInteractable : Interactable
         player.grahCollider.enabled = false;
 
         this.gameObject.transform.parent = null;
+        this.objectCollider.enabled = true;
         this.objectRigidbody.isKinematic = false;
     }
 }

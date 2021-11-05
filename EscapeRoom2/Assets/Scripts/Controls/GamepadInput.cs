@@ -28,8 +28,11 @@ public class GamepadInput : InputComponent
         firstPersonInputActions.PlayerGamepad.Examine.performed += Examine;
         firstPersonInputActions.PlayerGamepad.Examine.Enable();
 
+        firstPersonInputActions.PlayerGamepad.Grab.performed += Grab;
+        firstPersonInputActions.PlayerGamepad.Grab.canceled += FinishGrab;
+        firstPersonInputActions.PlayerGamepad.Grab.Enable();
+
         firstPersonInputActions.PlayerGamepad.Interact.performed += Interact;
-        firstPersonInputActions.PlayerGamepad.Interact.canceled += FinishInteract;
         firstPersonInputActions.PlayerGamepad.Interact.Enable();
     }
 
@@ -38,6 +41,7 @@ public class GamepadInput : InputComponent
         movement.Disable();
         look.Disable();
         firstPersonInputActions.PlayerGamepad.Examine.Disable();
+        firstPersonInputActions.PlayerGamepad.Grab.Disable();
         firstPersonInputActions.PlayerGamepad.Interact.Disable();
     }
 
@@ -46,16 +50,18 @@ public class GamepadInput : InputComponent
         interactControl.ExamineAction();
     }
 
-    protected override void Interact(InputAction.CallbackContext callbackContext)
+    protected override void Grab(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.interaction is TapInteraction)
-            interactControl.InteractAction();
-        else if (callbackContext.interaction is HoldInteraction)
-            interactControl.GrabAction();
+        interactControl.GrabAction();
     }
 
-    protected override void FinishInteract(InputAction.CallbackContext callbackContext)
+    protected override void FinishGrab(InputAction.CallbackContext callbackContext)
     {
         interactControl.LetGo();
+    }
+
+    protected override void Interact(InputAction.CallbackContext callbackContext)
+    {
+        interactControl.InteractAction();
     }
 }

@@ -30,12 +30,20 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Interact",
+                    "name": "Grab",
                     "type": "Button",
-                    "id": "f6d38e73-cdfe-44e4-85a0-7915faa4090d",
+                    "id": "bdff5db2-5c55-404f-aeb4-69015709dbfb",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap(duration=0.2,pressPoint=1),Hold(duration=0.5,pressPoint=1)"
+                    "interactions": "Hold"
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "a4402d42-a0e5-43f1-90bb-3c64fed447f1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -108,7 +116,7 @@
                 {
                     "name": "",
                     "id": "77e8fa3a-c802-4b64-84cc-05baca115d2f",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -118,8 +126,19 @@
                 },
                 {
                     "name": "",
-                    "id": "d0dbabe5-251b-4c74-937a-ae91959c9955",
+                    "id": "1f3ab715-8b33-4f88-bb43-2e276ffed01a",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47db02e9-f1ab-492d-9602-c70d31420af5",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -158,12 +177,20 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "574e9f74-7dda-4208-b608-540a9b4e960e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold"
+                },
+                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "b042d650-386c-43d7-af11-b0437e19049d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap(duration=0.2,pressPoint=1),Hold(duration=0.5,pressPoint=1)"
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -236,7 +263,7 @@
                 {
                     "name": "",
                     "id": "2ad43d29-2338-4ddd-9cf1-7e8f3cd83e7e",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -247,11 +274,22 @@
                 {
                     "name": "",
                     "id": "42d9ad39-007d-4446-bfd2-f960637ab8ec",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97a8d82e-d905-404d-b97e-7863580ac3fb",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

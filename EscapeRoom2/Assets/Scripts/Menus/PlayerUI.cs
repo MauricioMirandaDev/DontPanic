@@ -54,10 +54,16 @@ public class PlayerUI : MonoBehaviour
     private Texture interactKeyboard;
 
     [SerializeField]
+    private Texture grabKeyboard;
+
+    [SerializeField]
     private Texture examineGamepad;
 
     [SerializeField]
     private Texture interactGamepad;
+
+    [SerializeField]
+    private Texture grabGamepad;
 
     // Menus
     private WelcomeMenu welcomeMenu;
@@ -176,28 +182,29 @@ public class PlayerUI : MonoBehaviour
         RaycastHit raycastHit;
 
         // Look for static interactables or moveable interactables 
-        if (Physics.Raycast(ray, out raycastHit, raycastDistance, staticLayer))
+        if (Physics.Raycast(ray, out raycastHit, raycastDistance, moveableLayer))
         {
             focussedObject = raycastHit.transform.gameObject;
 
-            SetGameplayMenuVariables(Color.yellow, true, "INTERACT", "(tap)");
+            SetGameplayMenuVariables(Color.magenta, true, "GRAB", "(hold)", grabKeyboard, grabGamepad);
         }
-        else if (Physics.Raycast(ray, out raycastHit, raycastDistance, moveableLayer))
+        else if (Physics.Raycast(ray, out raycastHit, raycastDistance, staticLayer))
         {
             focussedObject = raycastHit.transform.gameObject;
 
-            SetGameplayMenuVariables(Color.magenta, true, "GRAB", "(hold)");
+            SetGameplayMenuVariables(Color.yellow, true, "INTERACT", "(tap)", interactKeyboard, interactGamepad);
         }
         else
         {
             focussedObject = null;
 
-            SetGameplayMenuVariables(Color.white, false, " ", " ");
+            SetGameplayMenuVariables(Color.white, false, " ", " ", null, null);
         }
     }
 
     // Set how the gameplay menu will appear 
-    private void SetGameplayMenuVariables(Color color, bool activateObject, string interactCommand, string interactDescription)
+    private void SetGameplayMenuVariables(Color color, bool activateObject, string actionCommandInstruction, string actionCommandDescription,
+        Texture actionIconTextureKeyboard, Texture actionIconTextureGamepad)
     {
         // Sets the color of the reticle
         gameplayMenu.reticle.color = color;
@@ -209,27 +216,28 @@ public class PlayerUI : MonoBehaviour
         // Activate gameplay menu and UI elements
         gameplayMenu.hint.gameObject.SetActive(activateObject);
 
-        gameplayMenu.examineAction.SetActive(activateObject);
-        gameplayMenu.interactAction.SetActive(activateObject);
+        gameplayMenu.examineWindow.SetActive(activateObject);
+        gameplayMenu.actionWindow.SetActive(activateObject);
 
         // Set how the interact control will appear
-        gameplayMenu.interactCommand.SetText(interactCommand);
-        gameplayMenu.interactCommand.color = color;
-        gameplayMenu.interactDescription.SetText(interactDescription);
-        gameplayMenu.interactDescription.color = color;
+        gameplayMenu.actionCommand.SetText(actionCommandInstruction);
+        gameplayMenu.actionCommand.color = color;
 
-        gameplayMenu.interactIcon.color = color;
+        gameplayMenu.actionDescription.SetText(actionCommandDescription);
+        gameplayMenu.actionDescription.color = color;
+
+        gameplayMenu.actionIcon.color = color;
 
         // Dispaly icons based on which input mode is selected
         switch (player.inputMode)
         {
             case FirstPersonPlayer.InputMode.Keyboard:
                 gameplayMenu.examineIcon.texture = examineKeyboard;
-                gameplayMenu.interactIcon.texture = interactKeyboard;
+                gameplayMenu.actionIcon.texture = actionIconTextureKeyboard;
                 break;
             case FirstPersonPlayer.InputMode.Gamepad:
                 gameplayMenu.examineIcon.texture = examineGamepad;
-                gameplayMenu.interactIcon.texture = interactGamepad;
+                gameplayMenu.actionIcon.texture = actionIconTextureGamepad;
                 break;
             default:
                 break;

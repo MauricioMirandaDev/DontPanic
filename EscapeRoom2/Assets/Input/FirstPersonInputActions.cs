@@ -43,12 +43,20 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Grab"",
                     ""type"": ""Button"",
-                    ""id"": ""f6d38e73-cdfe-44e4-85a0-7915faa4090d"",
+                    ""id"": ""bdff5db2-5c55-404f-aeb4-69015709dbfb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Tap(duration=0.2,pressPoint=1),Hold(duration=0.5,pressPoint=1)""
+                    ""interactions"": ""Hold""
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4402d42-a0e5-43f1-90bb-3c64fed447f1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -121,7 +129,7 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""77e8fa3a-c802-4b64-84cc-05baca115d2f"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -131,8 +139,19 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d0dbabe5-251b-4c74-937a-ae91959c9955"",
+                    ""id"": ""1f3ab715-8b33-4f88-bb43-2e276ffed01a"",
                     ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47db02e9-f1ab-492d-9602-c70d31420af5"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -171,12 +190,20 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Grab"",
+                    ""type"": ""Button"",
+                    ""id"": ""574e9f74-7dda-4208-b608-540a9b4e960e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold""
+                },
+                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""b042d650-386c-43d7-af11-b0437e19049d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Tap(duration=0.2,pressPoint=1),Hold(duration=0.5,pressPoint=1)""
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -249,7 +276,7 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2ad43d29-2338-4ddd-9cf1-7e8f3cd83e7e"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -260,11 +287,22 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""42d9ad39-007d-4446-bfd2-f960637ab8ec"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""97a8d82e-d905-404d-b97e-7863580ac3fb"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -278,12 +316,14 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
         m_PlayerKeyboardandMouse_Move = m_PlayerKeyboardandMouse.FindAction("Move", throwIfNotFound: true);
         m_PlayerKeyboardandMouse_Look = m_PlayerKeyboardandMouse.FindAction("Look", throwIfNotFound: true);
         m_PlayerKeyboardandMouse_Examine = m_PlayerKeyboardandMouse.FindAction("Examine", throwIfNotFound: true);
+        m_PlayerKeyboardandMouse_Grab = m_PlayerKeyboardandMouse.FindAction("Grab", throwIfNotFound: true);
         m_PlayerKeyboardandMouse_Interact = m_PlayerKeyboardandMouse.FindAction("Interact", throwIfNotFound: true);
         // Player (Gamepad)
         m_PlayerGamepad = asset.FindActionMap("Player (Gamepad)", throwIfNotFound: true);
         m_PlayerGamepad_Move = m_PlayerGamepad.FindAction("Move", throwIfNotFound: true);
         m_PlayerGamepad_Look = m_PlayerGamepad.FindAction("Look", throwIfNotFound: true);
         m_PlayerGamepad_Examine = m_PlayerGamepad.FindAction("Examine", throwIfNotFound: true);
+        m_PlayerGamepad_Grab = m_PlayerGamepad.FindAction("Grab", throwIfNotFound: true);
         m_PlayerGamepad_Interact = m_PlayerGamepad.FindAction("Interact", throwIfNotFound: true);
     }
 
@@ -337,6 +377,7 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerKeyboardandMouse_Move;
     private readonly InputAction m_PlayerKeyboardandMouse_Look;
     private readonly InputAction m_PlayerKeyboardandMouse_Examine;
+    private readonly InputAction m_PlayerKeyboardandMouse_Grab;
     private readonly InputAction m_PlayerKeyboardandMouse_Interact;
     public struct PlayerKeyboardandMouseActions
     {
@@ -345,6 +386,7 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerKeyboardandMouse_Move;
         public InputAction @Look => m_Wrapper.m_PlayerKeyboardandMouse_Look;
         public InputAction @Examine => m_Wrapper.m_PlayerKeyboardandMouse_Examine;
+        public InputAction @Grab => m_Wrapper.m_PlayerKeyboardandMouse_Grab;
         public InputAction @Interact => m_Wrapper.m_PlayerKeyboardandMouse_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerKeyboardandMouse; }
         public void Enable() { Get().Enable(); }
@@ -364,6 +406,9 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 @Examine.started -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnExamine;
                 @Examine.performed -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnExamine;
                 @Examine.canceled -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnExamine;
+                @Grab.started -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnGrab;
+                @Grab.performed -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnGrab;
+                @Grab.canceled -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnGrab;
                 @Interact.started -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerKeyboardandMouseActionsCallbackInterface.OnInteract;
@@ -380,6 +425,9 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 @Examine.started += instance.OnExamine;
                 @Examine.performed += instance.OnExamine;
                 @Examine.canceled += instance.OnExamine;
+                @Grab.started += instance.OnGrab;
+                @Grab.performed += instance.OnGrab;
+                @Grab.canceled += instance.OnGrab;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -394,6 +442,7 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerGamepad_Move;
     private readonly InputAction m_PlayerGamepad_Look;
     private readonly InputAction m_PlayerGamepad_Examine;
+    private readonly InputAction m_PlayerGamepad_Grab;
     private readonly InputAction m_PlayerGamepad_Interact;
     public struct PlayerGamepadActions
     {
@@ -402,6 +451,7 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerGamepad_Move;
         public InputAction @Look => m_Wrapper.m_PlayerGamepad_Look;
         public InputAction @Examine => m_Wrapper.m_PlayerGamepad_Examine;
+        public InputAction @Grab => m_Wrapper.m_PlayerGamepad_Grab;
         public InputAction @Interact => m_Wrapper.m_PlayerGamepad_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerGamepad; }
         public void Enable() { Get().Enable(); }
@@ -421,6 +471,9 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 @Examine.started -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnExamine;
                 @Examine.performed -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnExamine;
                 @Examine.canceled -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnExamine;
+                @Grab.started -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnGrab;
+                @Grab.performed -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnGrab;
+                @Grab.canceled -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnGrab;
                 @Interact.started -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerGamepadActionsCallbackInterface.OnInteract;
@@ -437,6 +490,9 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
                 @Examine.started += instance.OnExamine;
                 @Examine.performed += instance.OnExamine;
                 @Examine.canceled += instance.OnExamine;
+                @Grab.started += instance.OnGrab;
+                @Grab.performed += instance.OnGrab;
+                @Grab.canceled += instance.OnGrab;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -449,6 +505,7 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnExamine(InputAction.CallbackContext context);
+        void OnGrab(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
     public interface IPlayerGamepadActions
@@ -456,6 +513,7 @@ public class @FirstPersonInputActions : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnExamine(InputAction.CallbackContext context);
+        void OnGrab(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
 }

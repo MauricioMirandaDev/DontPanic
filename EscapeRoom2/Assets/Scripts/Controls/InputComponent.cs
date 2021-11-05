@@ -36,12 +36,17 @@ public class InputComponent : MonoBehaviour
     {
     }
 
-    // Interact controls
-    protected virtual void Interact(InputAction.CallbackContext callbackContext)
+    // Grab control
+    protected virtual void Grab(InputAction.CallbackContext callbackContext)
     {
     }
 
-    protected virtual void FinishInteract(InputAction.CallbackContext callbackContext)
+    protected virtual void FinishGrab(InputAction.CallbackContext callbackContext)
+    {
+    }
+
+    // Interact control
+    protected virtual void Interact(InputAction.CallbackContext callbackContext)
     {
     }
 }

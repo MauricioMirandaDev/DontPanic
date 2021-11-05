@@ -10,15 +10,15 @@ public class GameplayMenu : MonoBehaviour
 
     public TMP_Text hint;
 
-    public GameObject examineAction;
-    public GameObject interactAction;
+    public GameObject examineWindow;
+    public GameObject actionWindow;
 
     public TMP_Text examineCommand;
-    public TMP_Text interactCommand;
-    public TMP_Text interactDescription;
+    public TMP_Text actionCommand;
+    public TMP_Text actionDescription;
 
     public RawImage examineIcon;
-    public RawImage interactIcon;
+    public RawImage actionIcon;
 
     private void Start()
     {
