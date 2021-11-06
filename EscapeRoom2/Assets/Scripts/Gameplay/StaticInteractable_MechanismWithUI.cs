@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StaticInteractable_MechanismWithUI : StaticInteractable_Mechanism
 {
@@ -11,6 +12,9 @@ public class StaticInteractable_MechanismWithUI : StaticInteractable_Mechanism
     [SerializeField]
     protected AudioClip buttonPress;
 
+    [SerializeField]
+    protected Button highlightedButton;
+
     // Display this mechanism's interface
     public override void InteractAction()
     {
@@ -18,7 +22,7 @@ public class StaticInteractable_MechanismWithUI : StaticInteractable_Mechanism
 
         player.inputMode = FirstPersonPlayer.InputMode.Null;
 
-        player.playerUI.SetFocusedButton(interactMenu.exitButton);
+        player.playerUI.SetFocusedButton(highlightedButton);
     }
 
     // Exit this mechanism's interface

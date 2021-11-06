@@ -2424,6 +2424,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 1343645272}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &125258861
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3029,6 +3030,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 2084815564}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &134627534
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8537,6 +8539,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 582607286}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &446745797
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8649,6 +8652,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 1071018034}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &449087987
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8890,6 +8894,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 1093417790}
   interactMenu: {fileID: 1570430575}
   buttonPress: {fileID: 8300000, guid: fdd782b1ad293db4abb918007b7aff22, type: 3}
+  highlightedButton: {fileID: 627148477}
   fail: {fileID: 8300000, guid: fd6293aeb70d2de4cb5de87266ff1353, type: 3}
   pass: {fileID: 8300000, guid: 690f399efe9aa8f4d919259dc223aa58, type: 3}
   display: {fileID: 258746090}
@@ -13104,6 +13109,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 260310464}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &691921594
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15764,6 +15770,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 235679620}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &847087720
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17609,11 +17616,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13400000, guid: 0e33b4746325f4340a098fe90f63f970,
         type: 2}
-    - target: {fileID: 6424270456697187808, guid: 214b673e61a328f4b97a4c1f1bba63d3,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 4153f71eb210cff47bb8b2875aab4027, type: 2}
     - target: {fileID: 6424270456704572960, guid: 214b673e61a328f4b97a4c1f1bba63d3,
         type: 3}
       propertyPath: m_Name
@@ -21552,6 +21554,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 1999355709}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &1118924282
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22819,6 +22822,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 1073000739}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &1236715752
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23165,6 +23169,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 280229498}
   interactMenu: {fileID: 1906474252}
   buttonPress: {fileID: 8300000, guid: 926455c5574c6174bab7ae04f3491753, type: 3}
+  highlightedButton: {fileID: 1979991461}
 --- !u!65 &1261028068
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23514,6 +23519,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 219968766}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &1286143353
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31118,6 +31124,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 1295442891}
   interactMenu: {fileID: 908737775}
   buttonPress: {fileID: 8300000, guid: fdd782b1ad293db4abb918007b7aff22, type: 3}
+  highlightedButton: {fileID: 943356200}
   fail: {fileID: 8300000, guid: fd6293aeb70d2de4cb5de87266ff1353, type: 3}
   pass: {fileID: 8300000, guid: 690f399efe9aa8f4d919259dc223aa58, type: 3}
   display: {fileID: 624542466}
@@ -33075,6 +33082,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 1735435945}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &1771721003
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39752,6 +39760,7 @@ MonoBehaviour:
   correspondingDoor: {fileID: 0}
   interactMenu: {fileID: 1381898309}
   buttonPress: {fileID: 0}
+  highlightedButton: {fileID: 0}
 --- !u!64 &2098210089
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42569,7 +42578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bb58d189deabc4f9fbecc07bd0c8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 5
+  mouseSensitivity: 2
   gamepadSpeed: 100
   cameraTransform: {fileID: 5910197104564816710}
 --- !u!114 &5910197103871842158

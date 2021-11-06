@@ -12,21 +12,26 @@ public class StaticInteractable_PressurePlate : StaticInteractable_Mechanism
     // Communicate to the player this object can be interacted with
     public override void InteractAction()
     {
-        //player.playerAudioSource.PlayOneShot(plateFloor);
         player.playerUI.uiAudioSource.PlayOneShot(plateFloor);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        totalMass += other.GetComponent<Rigidbody>().mass;
-        if (totalMass >= 80.0f)
-            correspondingDoor.OpenDoor();
+        if (other.GetComponent<Rigidbody>() != null)
+        {
+            totalMass += other.GetComponent<Rigidbody>().mass;
+            if (totalMass >= 80.0f)
+                correspondingDoor.OpenDoor();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        totalMass -= other.GetComponent<Rigidbody>().mass;
-        if (totalMass < 80.0f)
-            correspondingDoor.CloseDoor();
+        if (other.GetComponent<Rigidbody>() != null)
+        {
+            totalMass -= other.GetComponent<Rigidbody>().mass;
+            if (totalMass < 80.0f)
+                correspondingDoor.CloseDoor();
+        }
     }
 }
