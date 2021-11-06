@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MoveableInteractable : Interactable
 {
+    [SerializeField]
+    private AudioClip pickUpSound;
+
+    [SerializeField]
+    private AudioClip dropSound;
+
     private Rigidbody objectRigidbody;
     private Collider objectCollider;
 
@@ -17,6 +23,7 @@ public class MoveableInteractable : Interactable
     public void PickUp()
     {
         player.playerUI.gameplayMenu.gameObject.SetActive(false);
+        player.playerUI.uiAudioSource.PlayOneShot(pickUpSound);
         player.grahCollider.enabled = true;
 
         this.gameObject.transform.parent = player.transform;
@@ -29,6 +36,7 @@ public class MoveableInteractable : Interactable
     public void Drop()
     {
         player.playerUI.gameplayMenu.gameObject.SetActive(true);
+        player.playerUI.uiAudioSource.PlayOneShot(dropSound);
         player.grahCollider.enabled = false;
 
         this.gameObject.transform.parent = null;

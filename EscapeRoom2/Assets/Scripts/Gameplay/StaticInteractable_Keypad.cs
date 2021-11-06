@@ -59,7 +59,8 @@ public class StaticInteractable_Keypad : StaticInteractable_MechanismWithUI
                 for (int j = 0; j < inputDisplay.Length; j++)
                     inputDisplay[j].SetText("-");
 
-                player.playerAudioSource.PlayOneShot(fail);
+                //player.playerAudioSource.PlayOneShot(fail);
+                player.playerUI.uiAudioSource.PlayOneShot(fail);
 
                 break;
             }
@@ -69,7 +70,8 @@ public class StaticInteractable_Keypad : StaticInteractable_MechanismWithUI
 
         if (solved)
         {
-            player.playerAudioSource.PlayOneShot(pass);
+            //player.playerAudioSource.PlayOneShot(pass);
+            player.playerUI.uiAudioSource.PlayOneShot(pass);
             PuzzleSolved();
         }
     }

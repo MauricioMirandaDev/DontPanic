@@ -20,7 +20,8 @@ public class StaticInteractable_Door : StaticInteractable
     // Communicate to player the door is locked
     public override void InteractAction()
     {
-        player.playerAudioSource.PlayOneShot(doorLocked);
+        //player.playerAudioSource.PlayOneShot(doorLocked);
+        player.playerUI.uiAudioSource.PlayOneShot(doorLocked);
     }
 
     public void OpenDoor()
@@ -38,6 +39,7 @@ public class StaticInteractable_Door : StaticInteractable
     // Play open or close sound effect
     public void PlaySoundEffect(AudioClip sound)
     {
-        player.playerAudioSource.PlayOneShot(sound);
+        //player.playerAudioSource.PlayOneShot(sound);
+        player.playerUI.uiAudioSource.PlayOneShot(sound);
     }
 }

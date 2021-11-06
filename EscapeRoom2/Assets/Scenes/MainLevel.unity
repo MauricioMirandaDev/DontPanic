@@ -5523,6 +5523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: An orange block.
+  pickUpSound: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  dropSound: {fileID: 8300000, guid: 65d9836027675574b8d070c5718f99c7, type: 3}
 --- !u!54 &257399143
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5878,7 +5880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: It's a door, but it's locked.
-  doorLocked: {fileID: 8300000, guid: 5f587ca37ceafa344b878a37e9c12fb7, type: 3}
+  doorLocked: {fileID: 8300000, guid: bf3052f0cd99a694a9c5d2a52a48ddba, type: 3}
 --- !u!95 &280229499
 Animator:
   serializedVersion: 3
@@ -12959,6 +12961,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: 'It''s a wooden box. It''s not very heavy. '
+  pickUpSound: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  dropSound: {fileID: 8300000, guid: 65d9836027675574b8d070c5718f99c7, type: 3}
 --- !u!54 &688905189
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13500,7 +13504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: It's locked! There must be a mechanism in this room to open it.
-  doorLocked: {fileID: 8300000, guid: 5f587ca37ceafa344b878a37e9c12fb7, type: 3}
+  doorLocked: {fileID: 8300000, guid: bf3052f0cd99a694a9c5d2a52a48ddba, type: 3}
 --- !u!95 &702490195
 Animator:
   serializedVersion: 3
@@ -19083,13 +19087,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a705f44a2948c7419e193f6255b0383, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2912df417157eea469ea15bd9808110a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21116,7 +21120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: It's locked! There must be a mechanism in this room to open it.
-  doorLocked: {fileID: 8300000, guid: 5f587ca37ceafa344b878a37e9c12fb7, type: 3}
+  doorLocked: {fileID: 8300000, guid: bf3052f0cd99a694a9c5d2a52a48ddba, type: 3}
 --- !u!95 &1093417791
 Animator:
   serializedVersion: 3
@@ -22566,8 +22570,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 5, z: 10}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!23 &1207265789
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23957,7 +23961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: It's locked! There must be a mechanism in this room to open it.
-  doorLocked: {fileID: 8300000, guid: 5f587ca37ceafa344b878a37e9c12fb7, type: 3}
+  doorLocked: {fileID: 8300000, guid: bf3052f0cd99a694a9c5d2a52a48ddba, type: 3}
 --- !u!95 &1295442892
 Animator:
   serializedVersion: 3
@@ -25979,6 +25983,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: A block made of concrete. It's really heavy.
+  pickUpSound: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  dropSound: {fileID: 8300000, guid: 65d9836027675574b8d070c5718f99c7, type: 3}
 --- !u!54 &1414654629
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26103,6 +26109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: A blue block.
+  pickUpSound: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  dropSound: {fileID: 8300000, guid: 65d9836027675574b8d070c5718f99c7, type: 3}
 --- !u!54 &1415089730
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26320,6 +26328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: A red block.
+  pickUpSound: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  dropSound: {fileID: 8300000, guid: 65d9836027675574b8d070c5718f99c7, type: 3}
 --- !u!54 &1419569960
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32044,7 +32054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: It's locked! There must be a mechanism in this room to open it.
-  doorLocked: {fileID: 8300000, guid: 5f587ca37ceafa344b878a37e9c12fb7, type: 3}
+  doorLocked: {fileID: 8300000, guid: bf3052f0cd99a694a9c5d2a52a48ddba, type: 3}
 --- !u!95 &1697764234
 Animator:
   serializedVersion: 3
@@ -32112,6 +32122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: A green block.
+  pickUpSound: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  dropSound: {fileID: 8300000, guid: 65d9836027675574b8d070c5718f99c7, type: 3}
 --- !u!54 &1700336245
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33511,6 +33523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: A block made of concrete. It's really heavy.
+  pickUpSound: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  dropSound: {fileID: 8300000, guid: 65d9836027675574b8d070c5718f99c7, type: 3}
 --- !u!54 &1786324837
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36061,6 +36075,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: A violet block.
+  pickUpSound: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  dropSound: {fileID: 8300000, guid: 65d9836027675574b8d070c5718f99c7, type: 3}
 --- !u!54 &1921216422
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -39114,6 +39130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHint: A yellow block.
+  pickUpSound: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  dropSound: {fileID: 8300000, guid: 65d9836027675574b8d070c5718f99c7, type: 3}
 --- !u!54 &2074431661
 Rigidbody:
   m_ObjectHideFlags: 0
